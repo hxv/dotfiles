@@ -1,0 +1,48 @@
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule ".vim/bundle/vim-airline"]
+	path = .vim/bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+[submodule ".vim/bundle/vim-deus"]
+	path = .vim/bundle/vim-deus
+	url = https://github.com/hxv/vim-deus.git
+[submodule ".vim/bundle/vim-gitgutter"]
+	path = .vim/bundle/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "/home/hxv/.vim/bundle/ctrlp.vim"]
+	path = .vim/bundle/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim
+[submodule "/home/hxv/.vim/bundle/php.vim"]
+	path = .vim/bundle/php.vim
+	url = https://github.com/stanangeloff/php.vim
+[submodule ".vim/bundle/emmet-vim"]
+	path = .vim/bundle/emmet-vim
+	url = https://github.com/mattn/emmet-vim
+[submodule ".vim/bundle/vim-better-whitespace"]
+	path = .vim/bundle/vim-better-whitespace
+	url = git://github.com/ntpeters/vim-better-whitespace.git
+[submodule ".vim/bundle/file-line"]
+	path = .vim/bundle/file-line
+	url = https://github.com/bogado/file-line
+[submodule ".vim/bundle/typescript-vim"]
+	path = .vim/bundle/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
+[submodule ".vim/bundle/fugitive"]
+	path = .vim/bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule ".vim/bundle/vim-workspace"]
+	path = .vim/bundle/vim-workspace
+	url = https://github.com/thaerkh/vim-workspace
+[submodule ".vim/bundle/vim-indentguides"]
+	path = .vim/bundle/vim-indentguides
+	url = https://github.com/thaerkh/vim-indentguides
+[submodule ".vim/bundle/vim-signature"]
+	path = .vim/bundle/vim-signature
+	url = https://github.com/kshenoy/vim-signature
+[submodule ".vim/bundle/php.vim"]
+	path = .vim/bundle/php.vim
+	url = https://github.com/stanangeloff/php.vim
+[submodule ".vim/bundle/ctrlp.vim"]
+	path = .vim/bundle/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim
