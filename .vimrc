@@ -246,6 +246,8 @@ inoremap <expr> <Up>   pumvisible() ? '<C-p>' : '<Up>'
 
 vnoremap // y/<C-R>"<CR>N
 
+nnoremap <C-w>o :only!<CR>
+
 " /SHORTCUTS / REMAPS
 
 
