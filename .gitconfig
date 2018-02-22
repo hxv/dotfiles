@@ -1,0 +1,45 @@
+[user]
+    email = admin@hxv.me
+    name = Michał Włodarczyk
+[alias]
+    s = status -u
+    debug-ssh = -c core.sshCommand=\"ssh -vvv\" fetch
+    add-deleted = "!f() { git status -uno --porcelain=2 | grep -P '^1 \\.D' | cut -d ' ' -f 9- | xargs -I {} git add {}; }; f"
+    b = rev-parse --abbrev-ref HEAD
+[push]
+    default = simple
+[pull]
+    rebase = true
+[diff]
+    compactionHeuristic = true
+[rerere]
+    enabled = true
+[merge]
+    ff = false
+    lineNumber = true
+[grep]
+    patternType = perl
+    lineNumber = true
+[color "grep"]
+    linenumber = green
+    match = yellow bold
+    filename = magenta
+[pager]
+    log = diff-so-fancy | less
+    show = diff-so-fancy | less
+    diff = diff-so-fancy | less
+[interactive]
+    diffFilter = diff-so-fancy
+[advice]
+    statusHints = false
+[core]
+    excludesfile = ~/.gitignore-global
+[color]
+    ui = true
+[diff-so-fancy]
+    markEmptyLines = false
+    stripLeadingSymbols = false
+    useUnicodeRuler = false
+[rebase]
+    autoSquash = true
+    autoStash = true

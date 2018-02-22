@@ -1,4 +1,10 @@
 /*
+!/.gitignore-global
+!/.gitconfig
+!/.gitattributes
+!/bin/
+/bin/*
+!/bin/diff-so-fancy
 !/.vimrc
 !/.gvimrc
 !/.vim/
