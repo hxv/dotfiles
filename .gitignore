@@ -23,6 +23,9 @@
 !/.vim/colors/
 /.vim/.netrwhist
 /.vim/init.vim
+!/.config/kupfer/
+/.config/kupfer/*
+!/.config/kupfer/kupfer.cfg
 !/.config/gtk-3.0/
 /.config/gtk-3.0/*
 !/.config/gtk-3.0/settings.ini
