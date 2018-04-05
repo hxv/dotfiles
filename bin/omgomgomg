@@ -1,0 +1,6 @@
+#!/bin/sh
+killall omxplayer
+killall omxplayer.bin
+sleep 2
+killall -9 omxplayer
+killall -9 omxplayer.bin

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+ITEM="PCM"
+
+if [[ "$1" == "up" ]]; then
+    amixer set "$ITEM" 2%+
+else
+    amixer set "$ITEM" 2%-
+fi

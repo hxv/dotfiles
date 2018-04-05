@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+MEM=$(cat /proc/meminfo)
+
+_get_mem () {
+	echo "$MEM" | grep -P "^$1:" | grep -P -o '\d+'
+}
+
+_format_mem () {
+	numfmt --to=iec --from-unit=1024 --suffix=B --format="%2f" "$1"
+}
+
+echo -n " "
+_format_mem $(( $(_get_mem 'MemFree') + $(_get_mem 'Buffers') + $(_get_mem 'Cached') ))

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+i3status | while :
+do
+	read line
+
+	while read SCRIPT; do
+		R=$("$SCRIPT")
+
+		if [ "$R" == "" ]; then
+			continue
+		fi
+
+		line="$R | $line"
+	done <<< "$(find "$0.d" -maxdepth 1 -type f | sort -h)"
+
+	echo "$line" | sed -E 's/\s+\|\s+/     /g' || exit 1
+done

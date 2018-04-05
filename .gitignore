@@ -5,7 +5,16 @@
 !/bin/
 /bin/*
 !/bin/diff-so-fancy
+!/bin/status_bar
+!/bin/status_bar.d/
+!/bin/vol-control
+!/bin/omgomgomg
+!/bin/lock
+!/bin/lock.png
+!/bin/tmux-color
 !/.fonts/
+!/.i3/
+!/.i3status.conf
 !/.vimrc
 !/.gvimrc
 !/.vim/

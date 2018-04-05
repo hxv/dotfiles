@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+STATUS=$(cmus-remote -Q 2>/dev/null)
+
+if [ "$?" -ne 0 ]; then
+    exit
+fi
+
+STATE=$(echo "$STATUS" | head -n 1 | sed 's/status //')
+
+CURRENT=$(echo "$STATUS" | grep -P 'tag (artist|title)' | perl -pe 's/tag \w+ //' | perl -pe 's/\n/ - /' | perl -pe 's/ - $//')
+
+if [ "$CURRENT" == "" ]; then
+	exit
+fi
+
+if [ "$STATE" == "stopped" ]; then
+	echo -n " ";
+elif [ "$STATE" == "paused" ]; then
+	echo -n " "
+else
+	echo -n " "
+fi
+
+echo "$CURRENT"
+
