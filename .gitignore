@@ -21,3 +21,4 @@
 !/.vim/colors/
 /.vim/.netrwhist
 /.vim/init.vim
+!/.tmux.conf
