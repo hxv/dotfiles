@@ -231,6 +231,8 @@ client.background       $color_bg
 bindsym Ctrl+Shift+F12 exec --no-startup-id omgomgomg
 bindsym $mod+Shift+x exec lock
 bindsym $mod+space exec ~/bin/dmenu_hxv
+bindsym XF86MonBrightnessUp exec light-control up
+bindsym XF86MonBrightnessDown exec light-control down
 
 exec_always feh --bg-max ~/.i3/wallpaper.png
 exec nm-applet
