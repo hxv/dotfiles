@@ -1,0 +1,10 @@
+# hxv/dotfiles
+Collection of my dotfiles :)
+
+Some applications may be required for everything to work properly. To install them under Xubuntu run:
+```
+sudo add-apt-repository ppa:neovim-ppa/stable
+sudo apt-get update
+sudo apt-get install git i3 i3lock kupfer tmux neovim xbrightness
+```
+(list of dependencies problably is not complete)
