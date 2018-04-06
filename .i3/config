@@ -195,8 +195,10 @@ set $color_inactive #b9c0c9
 set $color_inactive_bg #0c131c
 set $color_inactive_2 #b9c0c9
 set $color_inactive_2_bg #444444
-set $color_urgent #0c131c
-set $color_urgent_bg #0c131c
+set $color_urgent #b9c0c9
+set $color_urgent_bg #9b0000
+set $color_binding_mode #b9c0c9
+set $color_binding_mode_bg #560052
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -206,9 +208,10 @@ bar {
         statusline $color
         separator  $color
 #       name               border             bg                 text
-        focused_workspace  $color_active_bg   $color_active_bg   $color_active
-        inactive_workspace $color_inactive_bg $color_inactive_bg $color_inactive
-        urgent_workspace   $color_urgent_bg   $color_urgent_bg   $color_urgent
+        focused_workspace  $color_active_bg       $color_active_bg       $color_active
+        inactive_workspace $color_inactive_bg     $color_inactive_bg     $color_inactive
+        urgent_workspace   $color_urgent_bg       $color_urgent_bg       $color_urgent
+        binding_mode       $color_binding_mode_bg $color_binding_mode_bg $color_binding_mode
 #        active_workspace   #000000 #000000 #000000
     }
     status_command ~/bin/status_bar
