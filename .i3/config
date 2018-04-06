@@ -10,7 +10,7 @@ bindsym $mod+Shift+Return exec xfce4-terminal
 
 bindsym $mod+Shift+q kill
 
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec kupfer
 bindsym $mod+bracketright exec ~/bin/vol-control up
 bindsym $mod+bracketleft exec ~/bin/vol-control down
 
