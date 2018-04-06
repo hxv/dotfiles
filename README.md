@@ -8,3 +8,5 @@ sudo apt-get update
 sudo apt-get install git i3 i3lock kupfer tmux neovim xbrightness
 ```
 (list of dependencies problably is not complete)
+
+Repository itself contains submodules, so you should either use `git clone --recurse-submodules` to clone it or run `git submodule update --init` after cloning.
