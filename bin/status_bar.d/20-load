@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-echo -n " "
-uptime | perl -p -e 's/^.+load average: //'

@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
 
-ITEM="PCM"
+ITEM="Master"
 
 if [[ "$1" == "up" ]]; then
-    amixer set "$ITEM" 2%+
+    pactl set-sink-volume 0 +5%
 else
-    amixer set "$ITEM" 2%-
+    pactl set-sink-volume 0 -5%
+fi
+
+CURRENT=$(pacmd list-sinks | grep volume: | head -n 1 | cut -d / -f 2 | tr -d ' %')
+
+if (( "$CURRENT" > "100" )); then
+    vol-control down
 fi

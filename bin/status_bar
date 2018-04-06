@@ -1,18 +1,33 @@
 #!/usr/bin/env bash
 
+SCRIPT=$(basename "$0")
+DIR=$(dirname "$0")
+
 i3status | while :
 do
-	read line
+	read LINE
 
-	while read SCRIPT; do
-		R=$("$SCRIPT")
+    for PLACEHOLDER in $(echo "$LINE" | grep -P -o "placeholder_\w+"); do
+        PLACEHOLDER=$(echo "$PLACEHOLDER" | sed 's/placeholder_//')
 
-		if [ "$R" == "" ]; then
-			continue
-		fi
+        if [[ -f "$DIR/$SCRIPT.d/$PLACEHOLDER" ]]; then
+            VALUE=$("$DIR/$SCRIPT.d/$PLACEHOLDER")
+        else
+            VALUE="script $PLACEHOLDER not found"
+        fi
 
-		line="$R | $line"
-	done <<< "$(find "$0.d" -maxdepth 1 -type f | sort -h)"
+        LINE=$(echo "$LINE" | sed "s/placeholder_$PLACEHOLDER/$VALUE/")
+    done
 
-	echo "$line" | sed -E 's/\s+\|\s+/     /g' || exit 1
+#	while read SCRIPT; do
+#		R=$("$SCRIPT")
+#
+#		if [ "$R" == "" ]; then
+#			continue
+#		fi
+#
+#		line="$R | $line"
+#	done <<< "$(find "$0.d" -maxdepth 1 -type f | sort -h)"
+
+	echo "$LINE"
 done

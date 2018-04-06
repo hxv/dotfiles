@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-echo -n " "
-top -bn 2 -d 1 | grep '^%Cpu' | tail -n 1 | awk '{print $2+$4+$6}' | tr -d '\n'
-echo -n "%"
