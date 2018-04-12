@@ -247,6 +247,7 @@ exec_always feh --bg-max ~/.i3/wallpaper.png
 exec nm-applet
 exec_always setxkbmap pl
 exec xkbevd -bg
+exec synclient TapButton3=2
 focus_follows_mouse no
 mouse_warping none
 
