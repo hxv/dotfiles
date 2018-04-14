@@ -46,6 +46,7 @@ bindsym $mod+a focus parent
 
 bindsym $mod+grave scratchpad show
 bindsym $mod+Shift+grave move scratchpad
+bindsym $mod+k sticky toggle
 
 set $workspace1  "1: "
 set $workspace2  "2: "
