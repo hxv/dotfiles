@@ -256,4 +256,5 @@ mouse_warping none
 
 exec --no-startup-id xfsettingsd --sm-client-disable &
 
-#for_window [class=""] resize set 10 10
+for_window [title="^\.\.\.$| - Floating YouTube$"] floating enable ; sticky enable ; [instance="google-chrome"] focus
+no_focus [title="^\.\.\.$| - Floating YouTube$"]
