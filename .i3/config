@@ -238,19 +238,19 @@ client.placeholder      $color_bg            $color_bg            $color_bg     
 client.background       $color_bg
 
 bindsym Ctrl+Shift+F12 exec --no-startup-id omgomgomg
-bindsym $mod+Shift+x exec lock
+bindsym $mod+Shift+x exec --no-startup-id lock
 bindsym $mod+space exec ~/bin/dmenu_hxv
-bindsym XF86MonBrightnessUp exec light-control up
-bindsym XF86MonBrightnessDown exec light-control down
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86MonBrightnessUp exec --no-startup-id light-control up
+bindsym XF86MonBrightnessDown exec --no-startup-id light-control down
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
-exec_always feh --bg-max ~/.i3/wallpaper.png
-exec nm-applet
-exec_always setxkbmap pl
-exec xkbevd -bg
-exec synclient TapButton3=2
+exec_always --no-startup-id feh --bg-max ~/.i3/wallpaper.png
+exec --no-startup-id nm-applet
+exec_always --no-startup-id setxkbmap pl
+exec --no-startup-id xkbevd -bg
+exec --no-startup-id synclient TapButton3=2
 focus_follows_mouse no
 mouse_warping none
 
