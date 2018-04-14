@@ -221,6 +221,7 @@ bar {
 }
 
 focus_follows_mouse no
+force_display_urgency_hint 500 ms
 
 new_window normal
 new_float pixel 4
