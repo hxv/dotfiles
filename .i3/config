@@ -190,18 +190,18 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $color #b9c0c9
-set $color_bg #0c131c
-set $color_active #b9c0c9
-set $color_active_bg #3f6e9e
-set $color_inactive #b9c0c9
-set $color_inactive_bg #0c131c
-set $color_inactive_2 #b9c0c9
-set $color_inactive_2_bg #444444
-set $color_urgent #b9c0c9
-set $color_urgent_bg #9b0000
-set $color_binding_mode #b9c0c9
-set $color_binding_mode_bg #560052
+set $color #bbbbbb
+set $color_bg #1c1f21
+set $color_active #bbbbbb
+set $color_active_bg #515658
+set $color_inactive #bbbbbb
+set $color_inactive_bg #1c1f21
+set $color_inactive_2 #bbbbbb
+set $color_inactive_2_bg #3c3f41
+set $color_urgent #1c1f21
+set $color_urgent_bg #FF6B68
+set $color_binding_mode #1c1f21
+set $color_binding_mode_bg #AE8ABE
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
