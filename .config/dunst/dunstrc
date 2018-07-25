@@ -1,0 +1,73 @@
+[global]
+    font = DejaVu Sans Mono for Powerline 8
+    allow_markup = yes
+    format = "<b>%s</b>\n%b"
+    sort = yes
+    indicate_hidden = yes
+    alignment = left
+    bounce_freq = 0
+    show_age_threshold = 60
+    word_wrap = yes
+    ignore_newline = no
+    geometry = "500x3-8+8"
+    shrink = yes
+    transparency = 0
+    idle_threshold = 120
+    monitor = 0
+    follow = mouse
+    sticky_history = no
+    history_length = 20
+    show_indicators = no
+    line_height = 1
+    separator_height = 2
+    padding = 8
+    horizontal_padding = 8
+    separator_color = frame
+    startup_notification = false
+    icon_position = right
+    icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+
+[frame]
+    width = 1
+    color = "#515658"
+
+[shortcuts]
+    close = mod4+shift+slash
+    close_all = ctrl+shift+space
+    history = mod4+slash
+
+[urgency_low]
+    background = "#2B2B2B"
+    foreground = "#bbbbbb"
+    timeout = 10
+
+[urgency_normal]
+    background = "#2b2b2b"
+    foreground = "#bbbbbb"
+    timeout = 10
+
+[urgency_critical]
+    background = "#FF8785"
+    foreground = "#2b2b2b"
+    timeout = 0
+
+
+#[ignore]
+#    # This notification will not be displayed
+#    summary = "foobar"
+#    format = ""
+#
+#[signed_on]
+#    appname = Pidgin
+#    summary = "*signed on*"
+#    urgency = low
+#
+#[signed_off]
+#    appname = Pidgin
+#    summary = *signed off*
+#    urgency = low
+#
+#[says]
+#    appname = Pidgin
+#    summary = *says*
+#    urgency = critical

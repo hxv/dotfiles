@@ -24,6 +24,7 @@
 /.vim/.netrwhist
 /.vim/init.vim
 !/.config/rofi/
+!/.config/dunst/
 !/.config/gtk-3.0/
 /.config/gtk-3.0/*
 !/.config/gtk-3.0/settings.ini
