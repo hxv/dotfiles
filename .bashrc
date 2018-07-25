@@ -58,3 +58,5 @@ fi
 export LESS=-XRF
 
 source ~/.bash/alias.bash
+source ~/.bash/fzf-key-bindings.bash
+source ~/.bash/fzf-colors.bash

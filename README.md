@@ -12,3 +12,6 @@ sudo apt-get install git i3 i3lock rofi tmux neovim xbacklight xclip
 Repository itself contains submodules, so you should either use `git clone --recurse-submodules` to clone it or run `git submodule update --init` after cloning.
 
 Media keys (play/pause, next, prev) are handled with [playerctl](https://github.com/acrisci/playerctl).
+
+You will also need:
+* [fzf](https://github.com/junegunn/fzf)
