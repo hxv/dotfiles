@@ -5,7 +5,7 @@ Some applications may be required for everything to work properly. To install th
 ```
 sudo add-apt-repository ppa:neovim-ppa/stable
 sudo apt-get update
-sudo apt-get install git i3 i3lock kupfer tmux neovim xbacklight xclip
+sudo apt-get install git i3 i3lock rofi tmux neovim xbacklight xclip
 ```
 (list of dependencies problably is not complete)
 

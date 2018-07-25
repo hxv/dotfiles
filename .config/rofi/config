@@ -1,0 +1,16 @@
+rofi.modi: drun,window,run,ssh
+rofi.font: DejaVu Sans Mono for Powerline 9
+rofi.lines: 10
+rofi.separator-style: solid
+rofi.color-window: #2B2B2B, #515658, #515658
+rofi.color-normal: #2B2B2B, #BBBBBB, #2B2B2B, #BBBBBB, #2B2B2B
+rofi.color-active: #515658, #BBBBBB, #515658, #BBBBBB, #2B2B2B
+rofi.color-urgent: #2B2B2B, #FF6B68, #2B2B2B, #FF6B68, #2B2B2B
+rofi.scrollbar-width: 3
+rofi.matching: fuzzy
+rofi.width: 30
+rofi.padding: 8
+rofi.monitor: -4
+rofi.terminal: xfce4-terminal
+rofi.ssh-command: {terminal} -e "tmux -c '{ssh-client} {host}'"
+rofi.run-shell-command: {terminal} -e "tmux -c '{cmd}'"
