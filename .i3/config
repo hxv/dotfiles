@@ -227,7 +227,7 @@ new_window normal
 new_float pixel 4
 hide_edge_borders both
 floating_minimum_size -1 x -1
-floating_maximum_size 960 x 540
+floating_maximum_size 1440 x 810
 
 client.focused          $color_active_bg     $color_active_bg     $color_active     $color_active_bg     $color_active_bg
 client.unfocused        $color_inactive_bg   $color_inactive_bg   $color_inactive   $color_inactive_bg   $color_inactive_bg
