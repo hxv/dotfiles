@@ -26,7 +26,7 @@ case "$TERM" in
 esac
 
 if [ "$color_prompt" = yes ]; then
-    PS1='\e[1;32m\u@\h\e[0m:\e[1;34m\w\e[0m\$ '
+    PS1='\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ '
 else
     PS1='\u@\h:\w\$ '
 fi
