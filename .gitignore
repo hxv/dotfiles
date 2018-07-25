@@ -12,6 +12,8 @@
 !/bin/lock
 !/bin/lock.png
 !/bin/tmux-color
+!/.bash/
+!/.bashrc
 !/.config/
 /.config/*
 !/.fonts/
