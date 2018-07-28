@@ -4,7 +4,7 @@
 !/.gitattributes
 !/bin/
 /bin/*
-!/bin/diff-so-fancy
+!/bin/diff-highlight
 !/bin/status_bar
 !/bin/status_bar.d/
 !/bin/vol-control
