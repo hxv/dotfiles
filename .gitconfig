@@ -1,6 +1,7 @@
 [user]
     email = admin@hxv.me
     name = Michał Włodarczyk
+    signingkey = 485BEEE610D7B7E4460A0B1E02E26259B32C4961
 [alias]
     s = status -u
     debug-ssh = -c core.sshCommand=\"ssh -vvv\" fetch
@@ -44,3 +45,5 @@
 [rebase]
     autoSquash = true
     autoStash = true
+[commit]
+    gpgSign = true
