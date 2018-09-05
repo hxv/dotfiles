@@ -48,3 +48,5 @@
     autoStash = true
 [commit]
     gpgSign = true
+[log]
+    date=iso8601
