@@ -158,6 +158,13 @@ endfunction
 
 :command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
 
+function! WriteSudo()
+    :silent w !sudo tee %
+    :e!
+endfunction
+
+:command W call WriteSudo()
+
 " /FUNCTIONS
 
 
