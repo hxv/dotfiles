@@ -17,6 +17,7 @@
     enabled = true
 [merge]
     ff = false
+    renamelimit = 999999
     lineNumber = true
 [grep]
     patternType = perl
