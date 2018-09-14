@@ -15,3 +15,6 @@ Media keys (play/pause, next, prev) are handled with [playerctl](https://github.
 
 You will also need:
 * [fzf](https://github.com/junegunn/fzf)
+
+You can run `setup` script to create symlinks to files in your home directory.
+Existing files will we backed up (or deleted, if they are identical to ones in repo).
