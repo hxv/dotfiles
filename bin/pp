@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+FILES=$(path-extractor)
+
+if [[ "$FILES" == "" ]]; then
+    exit
+fi
+
+SELECTED=$(echo "$FILES" | fzf -m)
+
+if [[ "$SELECTED" == "" ]]; then
+    exit
+fi
+
+"$@" $SELECTED <&1
