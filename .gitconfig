@@ -42,7 +42,7 @@
     oldNormal = "red black"
     oldHighlight = "black red"
     newNormal = "green black"
-    newHighlight = "black red"
+    newHighlight = "black green"
 [rebase]
     autoSquash = true
     autoStash = true
