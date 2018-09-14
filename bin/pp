@@ -6,7 +6,7 @@ if [[ "$FILES" == "" ]]; then
     exit
 fi
 
-SELECTED=$(echo "$FILES" | fzf -m)
+SELECTED=$(echo "$FILES" | fzf -m --height=50%)
 
 if [[ "$SELECTED" == "" ]]; then
     exit
