@@ -10,6 +10,6 @@ fi
 
 CURRENT=$(pacmd list-sinks | grep volume: | head -n 1 | cut -d / -f 2 | tr -d ' %')
 
-if (( "$CURRENT" > "100" )); then
+if (( "$CURRENT" > "150" )); then
     vol-control down
 fi
