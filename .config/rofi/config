@@ -7,7 +7,7 @@ rofi.color-normal: #2B2B2B, #BBBBBB, #2B2B2B, #BBBBBB, #2B2B2B
 rofi.color-active: #515658, #BBBBBB, #515658, #BBBBBB, #2B2B2B
 rofi.color-urgent: #2B2B2B, #FF6B68, #2B2B2B, #FF6B68, #2B2B2B
 rofi.scrollbar-width: 3
-rofi.matching: fuzzy
+rofi.matching: normal
 rofi.width: 30
 rofi.padding: 8
 rofi.monitor: -4
