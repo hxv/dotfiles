@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
-ITEM="Master"
+index=$(pacmd list-sinks | pcregrep -o1 '^\s+\*\s+index: (\d+)')
 
 if [[ "$1" == "up" ]]; then
-    pactl set-sink-volume 0 +5%
+    pactl set-sink-volume "$index" +5%
 else
-    pactl set-sink-volume 0 -5%
+    pactl set-sink-volume "$index" -5%
 fi
 
-CURRENT=$(pacmd list-sinks | grep volume: | head -n 1 | cut -d / -f 2 | tr -d ' %')
+current=$(pacmd list-sinks | pcregrep -A9999 '^\s*\*\s*index: \d+' | pcregrep -o1 'base volume: \d+ / (\d+)%' | head -n 1)
 
-if (( "$CURRENT" > "150" )); then
+if (( "$current" > "150" )); then
     vol-control down
 fi
