@@ -19,3 +19,12 @@ You will also need:
 
 You can run `setup` script to create symlinks to files in your home directory.
 Existing files will we backed up (or deleted, if they are identical to ones in repo).
+
+## Scripts
+
+### `pp`
+`pp` reads lines from stdin, finds paths (using `path-extractor`), allows to select some files (using `fzf`) and executes command passing paths as arguments.
+
+```bash
+git status -u | pp vim
+```
