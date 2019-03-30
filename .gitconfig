@@ -12,6 +12,7 @@
     rebase = true
 [diff]
     compactionHeuristic = true
+    renamelimit = 999999
 [rerere]
     enabled = true
 [merge]
