@@ -44,6 +44,7 @@ for FILE in $(find "$DIR" -mindepth 1 -type f "${DONT_FIND[@]}" -printf "%P\n");
     fi
 
     # create link
+    mkdir -p $(dirname "$HOME/$FILE")
     ln -s "$DIR/$FILE" "$HOME/$FILE"
 done
 
