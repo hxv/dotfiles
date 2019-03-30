@@ -13,6 +13,7 @@
 [diff]
     compactionHeuristic = true
     renamelimit = 999999
+    colorMoved = plain
 [rerere]
     enabled = true
 [merge]
@@ -26,6 +27,9 @@
     linenumber = green
     match = yellow bold
     filename = magenta
+[color "diff"]
+    newMoved = "#666512"
+    oldMoved = "#8c1712"
 [pager]
     log = diff-highlight | less
     show = diff-highlight | less
