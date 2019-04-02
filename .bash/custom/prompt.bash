@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 bash_custom_prompt () {
-    local last_exit="$?" bg fg text last_bg segment_end=$'\uE0B0'
+    local last_exit="$?" bg fg text last_bg segment_end=$''
 
     while read segment; do
         text=""

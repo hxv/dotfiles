@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-local ref icon=$'\uE0A0' status staged unstaged untracked
+local ref icon='' status staged unstaged untracked
 
 ref=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
 if [[ "$ref" == "" ]]; then # not inside a git repository
