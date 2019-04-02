@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+bg=44
+
+if [[ "$HISTFILE" == "" ]]; then # "private mode"
+    fg=30
+    bg=100
+fi
+
+text="$(whoami)@$(hostname)"

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+bg=42
+
+local dir=$(pwd)
+
+text=${dir/"$HOME"/"~"}

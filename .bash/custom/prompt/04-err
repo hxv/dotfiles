@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [[ "$last_exit" == "0" ]]; then
+    return
+fi
+
+bg=41
+
+text="$last_exit"

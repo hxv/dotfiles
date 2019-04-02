@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+local ref icon=$'\uE0A0' status staged unstaged untracked
+
+ref=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+if [[ "$ref" == "" ]]; then # not inside a git repository
+    return
+fi
+
+if [[ "$ref" == "HEAD" ]]; then
+    ref=$(git branch --points-at HEAD 2>/dev/null)
+fi
+
+ref=$(echo "$ref" | perl -pe 's/^\* \(HEAD detached at (.+?)\)$/detached:\1/')
+
+bg=45
+
+git rev-parse --short CHERRY_PICK_HEAD &>/dev/null
+if [[ "$?" == "0" ]]; then # cherry-pick in progress
+    bg=101
+fi
+
+text="${icon} ${ref}"
+
+status=$(git status --porcelain --untracked-files)
+
+staged=$(echo "$status" | grep -P '^[MADURC]' -c)
+if (( "$staged" > 0 )); then
+    text+=" S:$staged"
+fi
+
+unstaged=$(echo "$status" | grep -P '^ [MADURC]' -c)
+if (( "$unstaged" > 0 )); then
+    text+=" U:$unstaged"
+fi
+
+untracked=$(echo "$status" | grep -P '^\?\?' -c)
+if (( "$untracked" > 0 )); then
+    text+=" ?:$untracked"
+fi
+
+stashed=$(git stash list | wc -l)
+if (( "$stashed" > 0 )); then
+    text+=" {$stashed}"
+fi
+
+if [[ ! ( "$ref" =~ /^detached:/ ) ]]; then
+    behind=$(git log --oneline "$ref..origin/$ref" 2>/dev/null | wc -l)
+    if [[ "$behind" != "0" ]]; then
+        text+=" ↓$behind"
+    fi
+
+    ahead=$(git log --oneline "origin/$ref..$ref" 2>/dev/null | wc -l)
+    if [[ "$ahead" != "0" ]]; then
+        text+=" ↑$ahead"
+    fi
+fi
