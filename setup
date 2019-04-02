@@ -56,7 +56,7 @@ for SUBMODULE in $SUBMODULES; do
 
     # submodule exists - move to backup location
     # don't compare files - submodules are external and are not ment to be modified
-    if [[ -e "$DIR/$SUBMODULE" ]]; then
+    if [[ -e "$HOME/$SUBMODULE" ]]; then
         backup "$HOME/$SUBMODULE"
     fi
 
