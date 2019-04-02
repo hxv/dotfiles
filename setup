@@ -60,6 +60,8 @@ for SUBMODULE in $SUBMODULES; do
         backup "$HOME/$SUBMODULE"
     fi
 
+    mkdir -p $(dirname "$HOME/$SUBMODULE")
+
     # create link
     ln -s "$DIR/$SUBMODULE" "$HOME/$SUBMODULE"
 done
