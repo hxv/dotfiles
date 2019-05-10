@@ -12,3 +12,4 @@ hex() {
 alias xgrep='cut -d ":" -f 1,2 | tr "\n" " " | head -c -1 ; echo'
 
 alias cleanup-history='cat -n ~/.bash_history | sort -rk2 | sort -uk2 | sort -nk1 | cut -f2- > /tmp/.bash_history ; mv /tmp/.bash_history ~/.bash_history'
+alias sudo='sudo ' # https://askubuntu.com/a/22043
