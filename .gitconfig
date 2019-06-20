@@ -20,6 +20,7 @@
     ff = false
     renamelimit = 999999
     lineNumber = true
+    conflictstyle = diff3
 [grep]
     patternType = perl
     lineNumber = true
