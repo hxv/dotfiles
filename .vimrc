@@ -255,6 +255,11 @@ vnoremap // y/<C-R>"<CR>N
 
 nnoremap <C-w>o :only!<CR>
 
+" Fugitive conflict resolution
+nnoremap <leader>gd :Gvdiff<CR>
+nnoremap gdh :diffget //2<CR>
+nnoremap gdl :diffget //3<CR>
+
 " /SHORTCUTS / REMAPS
 
 
