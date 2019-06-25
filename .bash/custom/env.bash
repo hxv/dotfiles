@@ -10,3 +10,5 @@ export HISTFILESIZE=100000
 export HISTSIZE=10000
 export HISTCONTROL=ignoreboth # don't put duplicate lines or lines starting with space in the history
 export COMPOSER_HOME="$HOME/.config/composer/"
+
+export SSH_AUTH_SOCK=~/.gnupg/S.gpg-agent.ssh
