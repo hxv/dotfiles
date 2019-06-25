@@ -6,7 +6,7 @@ case $- in
       *) return;;
 esac
 
-for CUSTOM in $(find ~/.bash/custom/ -name '*.bash' -type f,l -executable); do
+for CUSTOM in $(find ~/.bash/custom/ -name '*.bash' \( -type f -or -type l \) -executable); do
     source "$CUSTOM"
 done
 

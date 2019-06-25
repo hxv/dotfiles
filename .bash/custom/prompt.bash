@@ -20,7 +20,7 @@ bash_custom_prompt () {
         echo -ne "\e[${fg};${bg}m ${text} \e[0m"
 
         last_bg="$bg"
-    done <<< "$(find ~/.bash/custom/prompt -type f,l -executable | sort)"
+    done <<< "$(find ~/.bash/custom/prompt \( -type f -or -type l \) -executable | sort)"
 
     echo -ne "\e[$(( $last_bg - 10 ))m${segment_end}\e[0m"
 }
