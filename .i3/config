@@ -259,5 +259,3 @@ exec --no-startup-id xfsettingsd --sm-client-disable &
 
 for_window [title="^\.\.\.$| - Floating YouTube$"] floating enable ; sticky enable ; [instance="google-chrome"] focus
 no_focus [title="^\.\.\.$| - Floating YouTube$"]
-
-for_window [class="^jetbrains-.+"] focus
