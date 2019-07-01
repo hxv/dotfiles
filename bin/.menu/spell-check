@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+word=$(rofi -dmenu -lines 0 -separator-style none -p "Co sprawdzić?")
+
+if [[ "$word" == "" ]]; then
+    exit
+fi
+
+check=$(echo "$word" | aspell -l pl -a | grep -P '^&' | perl -pe 's/^&\s*//g')
+
+if [[ "$check" == "" ]]; then
+    msg='<span color="#A8C023"><b>Poprawnie</b></span>'
+else
+    msg='<span color="#FF6B48"><b>Coś nie tak</b>: '"$check"'</span>'
+fi
+
+rofi -e "$msg" -markup -separator-style none

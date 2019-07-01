@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+HOME=$(realpath ~)
+
+APP=$(ls -1 $HOME/bin/.menu/ | rofi -location 1 -dmenu -width 100 -lines 2 -columns 9 -disable-history -hide-scrollbar)
+
+"$HOME/bin/.menu/$APP"

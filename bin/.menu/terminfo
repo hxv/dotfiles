@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+terminfo_data=$(curl -s 'https://raw.githubusercontent.com/hxv/dotfiles/master/.terminfo/tmux-256color.terminfo' | grep -v -P '^#' | gzip | base64 -w 0)
+
+xdotool type "echo '$terminfo_data' | base64 -d | gzip -d | tic -"

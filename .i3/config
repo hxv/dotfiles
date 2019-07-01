@@ -239,7 +239,7 @@ client.background       $color_bg
 
 bindsym Ctrl+Shift+F12 exec --no-startup-id omgomgomg
 bindsym $mod+Shift+x exec --no-startup-id lock
-bindsym $mod+space exec ~/bin/dmenu_hxv
+bindsym $mod+space exec ~/bin/top-menu
 bindsym XF86MonBrightnessUp exec --no-startup-id light-control up
 bindsym XF86MonBrightnessDown exec --no-startup-id light-control down
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
