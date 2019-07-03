@@ -1,0 +1,14 @@
+calendar.holidays=full
+weekstart=monday
+journal.time=yes
+
+data.location=~/.task
+
+include /usr/share/taskwarrior/solarized-dark-256.theme
+include ~/.taskwarrior/holidays.rc
+
+taskd.certificate=~\/.taskwarrior\/client.cert.pem
+taskd.key=~\/.taskwarrior\/client.key.pem
+taskd.ca=~\/.taskwarrior\/ca.cert.pem
+taskd.server=example.com:53589
+taskd.credentials=Home\/Michał Włodarczyk\/ffffffff-ffff-ffff-ffff-ffffffffffff
