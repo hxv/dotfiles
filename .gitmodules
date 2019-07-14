@@ -49,3 +49,6 @@
 [submodule "bin/safe-rm"]
 	path = bin/safe-rm
 	url = https://github.com/kaelzhang/shell-safe-rm.git
+[submodule ".tmux/tmux-logging"]
+	path = .tmux/tmux-logging
+	url = https://github.com/hxv/tmux-logging
