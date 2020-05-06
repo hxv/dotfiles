@@ -1,22 +1,22 @@
 # hxv/dotfiles
 Collection of my dotfiles :)
 
-Some applications may be required for everything to work properly. To install them under Xubuntu run:
+Some applications may be required for everything to work properly. To install them (and some other tools used by me) under Xubuntu run:
 ```
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo add-apt-repository ppa:git-core/ppa
-sudo apt-get update
-sudo apt-get install git i3 i3lock rofi tmux neovim xbacklight xclip scrot i3lock imagemagick golang-go pcregrep
+sudo apt update
+# required apps
+sudo apt install git i3 i3lock rofi tmux neovim xbacklight xclip scrot i3lock imagemagick golang-go pcregrep fzf feh playerctl
+# additional apps
+sudo apt install gnupg2 gdebi-core curl ranger sshfs transmission-remote-cli htop net-tools jq libxml2-utils
+# yubikey
+sudo apt install pcscd scdaemon gnupg2 pcsc-tools
 go get github.com/edi9999/path-extractor/path-extractor
 ```
 (list of dependencies problably is not complete)
 
 Repository itself contains submodules, so you should either use `git clone --recurse-submodules` to clone it or run `git submodule update --init` after cloning.
-
-Media keys (play/pause, next, prev) are handled with [playerctl](https://github.com/acrisci/playerctl).
-
-You will also need:
-* [fzf](https://github.com/junegunn/fzf)
 
 You can run `setup` script to create symlinks to files in your home directory.
 Existing files will we backed up (or deleted, if they are identical to ones in repo).
