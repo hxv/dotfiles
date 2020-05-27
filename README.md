@@ -7,9 +7,10 @@ sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo add-apt-repository ppa:git-core/ppa
 sudo apt update
 # required apps
-sudo apt install git i3 i3lock rofi tmux neovim xbacklight xclip scrot i3lock imagemagick golang-go pcregrep fzf feh playerctl
+sudo apt install git i3 i3lock rofi tmux neovim xbacklight xclip scrot i3lock imagemagick golang-go pcregrep fzf feh playerctl neovim
 # additional apps
-sudo apt install gnupg2 gdebi-core curl ranger sshfs transmission-remote-cli htop net-tools jq libxml2-utils
+sudo apt install gnupg2 gdebi-core curl ranger sshfs transmission-remote-cli htop net-tools jq libxml2-utils python3-pip kolourpaint bindfs whois nmap lnav expect pcregrep pgcli
+pip install termdown
 # yubikey
 sudo apt install pcscd scdaemon gnupg2 pcsc-tools
 go get github.com/edi9999/path-extractor/path-extractor
