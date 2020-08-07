@@ -11,6 +11,7 @@ sudo apt install git i3 i3lock rofi tmux neovim xbacklight xclip scrot i3lock im
 # additional apps
 sudo apt install gnupg2 gdebi-core curl ranger sshfs transmission-remote-cli htop net-tools jq libxml2-utils python3-pip kolourpaint bindfs whois nmap lnav expect pcregrep pgcli
 pip install termdown
+sudo snap install fx
 # yubikey
 sudo apt install pcscd scdaemon gnupg2 pcsc-tools
 go get github.com/edi9999/path-extractor/path-extractor
