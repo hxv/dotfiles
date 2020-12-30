@@ -3,7 +3,29 @@
 # Dependencies: imagemagick, i3lock-color-git, scrot
 set -o errexit -o noclobber -o nounset -o pipefail
 
-echo 'Screen locked' | logger -t 'i3-lock'
+for x in /tmp/.X11-unix/*; do
+    displayNum=$(echo $x | sed 's#/tmp/.X11-unix/X##')
+
+    activeUser=$(pinky | grep -m1 ":$1" | awk '{print $1}')
+
+    if [[ "$activeUser" == "" ]]; then
+        continue
+    fi
+
+    userHome=$(getent passwd "$activeUser" | cut -d: -f6)
+
+    export XAUTHORITY="$userHome/.Xauthority"
+
+    export DISPLAY=":$displayNum"
+done
+
+if [[ "$activeUser" == "" ]]; then
+    logger -t 'i3-lock' 'There is no active user to lock the screen as!'
+
+    exit 1
+fi
+
+logger -t 'i3-lock' 'Screen locked'
 
 IMAGE="$(mktemp).png"
 
@@ -14,6 +36,6 @@ scrot -z "$IMAGE"
 SCALE=5
 convert "$IMAGE" -contrast -scale $(echo "100 / $SCALE" | bc -l)% -scale $(echo "100 * $SCALE" | bc -l)% -statistic median 5x5 "$IMAGE"
 
-i3lock -n -i "$IMAGE"
+sudo -u "$activeUser" i3lock -n -i "$IMAGE"
 
-echo 'Screen unlocked' | logger -t 'i3-lock'
+logger -t 'i3-lock' 'Screen unlocked'
