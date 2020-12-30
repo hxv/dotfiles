@@ -4,7 +4,7 @@ yubikey_ppa = /etc/apt/sources.list.d/yubico-ubuntu-stable-$(ubuntu_codename).li
 #yubikey_serial = $(shell ykman list --serials | head -n 1)
 yubikey_serial = $(shell ykman info | grep '^Serial number: ' | cut -d ' ' -f 3)
 
-yubikey: /usr/bin/ykpamcfg /usr/bin/ykman /usr/lib/udev/rules.d/69-yubikey.rules /usr/lib/udev/rules.d/85-yubikey-lock.rules /etc/yubico/$(shell whoami)-$(yubikey_serial) /etc/pam.d/sudo
+yubikey: /usr/bin/ykpamcfg /usr/bin/ykman /usr/lib/udev/rules.d/69-yubikey.rules /usr/lib/udev/rules.d/85-yubikey-lock.rules /etc/yubico/$(shell whoami)-$(yubikey_serial) /etc/pam.d/sudo /etc/pam.d/lightdm
 .PHONY: yubikey
 
 $(yubikey_ppa):
@@ -42,6 +42,10 @@ else
 endif
 
 /etc/pam.d/sudo: $(lastword $(MAKEFILE_LIST))
+	grep pam_yubico.so $@ || sudo sed -i '0,/^@include/s/^@include/auth sufficient pam_yubico.so mode=challenge-response chalresp_path=\/etc\/yubico\n&/' $@
+	sudo touch $@
+
+/etc/pam.d/lightdm: $(lastword $(MAKEFILE_LIST))
 	grep pam_yubico.so $@ || sudo sed -i '0,/^@include/s/^@include/auth sufficient pam_yubico.so mode=challenge-response chalresp_path=\/etc\/yubico\n&/' $@
 	sudo touch $@
 
