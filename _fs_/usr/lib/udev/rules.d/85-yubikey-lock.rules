@@ -1,0 +1,2 @@
+#ACTION=="remove", SUBSYSTEM=="usb", ENV{PRODUCT}=="1050/407/512", ENV{DEVTYPE}=="usb_device", RUN+="/bin/bash -c '/home/hxv/bin/lock'"
+#ACTION=="add", SUBSYSTEM=="usb", ENV{PRODUCT}=="1050/407/512", ENV{DEVTYPE}=="usb_device", RUN+="/bin/bash -c '/home/hxv/bin/unlock &>> /tmp/foo'"
