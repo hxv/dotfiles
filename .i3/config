@@ -155,9 +155,19 @@ bindsym $mod+Ctrl+Shift+KP_8 move container to workspace $workspace18
 bindsym $mod+Ctrl+Shift+KP_9 move container to workspace $workspace19
 bindsym $mod+Ctrl+Shift+KP_0 move container to workspace $workspace20
 
-# set $monitor_left "default"
+set $monitor_left "eDP-1"
+set $monitor_right "HDMI-1"
 
-# workspace $workspace1 output $monitor_left
+workspace $workspace1 output $monitor_left
+workspace $workspace2 output $monitor_left
+workspace $workspace3 output $monitor_right
+workspace $workspace4 output $monitor_right
+workspace $workspace5 output $monitor_right
+workspace $workspace6 output $monitor_right
+workspace $workspace7 output $monitor_left
+workspace $workspace8 output $monitor_right
+workspace $workspace9 output $monitor_right
+workspace $workspace10 output $monitor_left
 
 #assign [class="Google-chrome"] $workspace1
 #assign [class="Firefox"] $workspace1
