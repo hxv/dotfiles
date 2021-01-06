@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+info() { echo -e $(date)" \e[34m$*\e[0m" >&2; }
+
+trap 'echo $( date ) Backup interrupted >&2; exit 2' INT TERM
+
+export BORG_REPO=~/remote/backup
+
+backup_locations=(
+    ~/.bash_history
+    ~/bin
+    ~/Code
+    ~/tmp
+    ~/{Desktop,Documents,Downloads,Music,Pictures,Public,Templates,Videos}
+    ~/Calibre\ Library
+)
+
+info "Mounting remote backup storage"
+mkdir -p "$BORG_REPO"
+sudo mount -t nfs qnap:/hxv/borg "$BORG_REPO"
+
+# borg init --encryption=none
+
+info "Starting backup"
+borg create --verbose --filter AME --list --stats --show-rc --compression lzma --exclude-caches ::'{hostname}-{now}' "${backup_locations[@]}"
+backup_exit=$?
+
+info "Pruning repository"
+borg prune --list --prefix '{hostname}-' --show-rc --keep-daily 30 --keep-weekly 10 --keep-monthly 12
+prune_exit=$?
+
+global_exit=$(( backup_exit > prune_exit ? backup_exit : prune_exit ))
+
+if [ ${global_exit} -eq 0 ]; then
+    info "Backup and Prune finished successfully"
+elif [ ${global_exit} -eq 1 ]; then
+    info "Backup and/or Prune finished with warnings"
+else
+    info "Backup and/or Prune finished with errors"
+fi
+
+exit ${global_exit}
