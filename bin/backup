@@ -39,4 +39,6 @@ else
     info "Backup and/or Prune finished with errors"
 fi
 
+date +%s > ~/.cache/last-backup-date
+
 exit ${global_exit}

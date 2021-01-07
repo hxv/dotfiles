@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+file=~/.cache/last-backup-date
+
+echo -n " "
+
+if [[ ! -f $file ]]; then
+    echo -n "No backup!"
+
+    exit
+fi
+
+backup_date=$(cat ~/.cache/last-backup-date)
+
+backup_age=$(( $(date +%s) - "$backup_date" ))
+
+if (( "$backup_age" <= 60 )); then
+    echo -n "${backup_age}s"
+elif (( "$backup_age" <= 60*60 )); then
+    echo -n $(( "$backup_age" / 60 ))"m"
+elif (( "$backup_age" <= 60*60*24 )); then
+    echo -n $(( "$backup_age" / 60 / 60 ))"h"
+else
+    echo -n $(( "$backup_age" / 60 / 60 / 24 ))"d"
+fi
+
