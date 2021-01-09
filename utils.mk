@@ -31,3 +31,6 @@ $(utils_simple_targets):
 
 /usr/sbin/uptimed:
 	$(call install,uptimed)
+
+/usr/sbin/gparted:
+	$(call install,gparted)
