@@ -28,3 +28,6 @@ $(utils_simple_targets):
 
 /usr/bin/xmllint:
 	$(call install,libxml2-utils)
+
+/usr/sbin/uptimed:
+	$(call install,uptimed)
