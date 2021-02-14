@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+for pid in $(pidof -x ${BASH_SOURCE[0]}); do
+    if [ $pid != $$ ]; then
+        kill $pid
+    fi
+done
+
+i3-msg -t subscribe -m '[ "window" ]' \
+    | jq '. | select(.container.floating == "user_on" and .change == "new") | .container.window' -c --unbuffered -r \
+    | xargs -I {} i3-msg '[ id={} ] move position center'
