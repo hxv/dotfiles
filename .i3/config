@@ -155,8 +155,8 @@ bindsym $mod+Ctrl+Shift+KP_8 move container to workspace $workspace18
 bindsym $mod+Ctrl+Shift+KP_9 move container to workspace $workspace19
 bindsym $mod+Ctrl+Shift+KP_0 move container to workspace $workspace20
 
-set $monitor_left "eDP-1-1"
-set $monitor_right "HDMI-1-1"
+set_from_resource $monitor_left bash -c "xrandr | grep -P '^.+? connected primary ' | cut -d ' ' -f 1"
+set_from_resource $monitor_right bash -c "xrandr | { grep -P '^.+? connected ' || echo unknown ; } | grep -v ' primary ' | cut -d ' ' -f 1"
 
 workspace $workspace1 output $monitor_left
 workspace $workspace2 output $monitor_left
