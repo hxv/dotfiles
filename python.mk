@@ -11,4 +11,4 @@ python: /usr/bin/pip3 $(pip_utils_targets)
 	$(call install,python3-pip)
 
 $(pip_utils_targets): /usr/bin/pip3
-	pip install $(notdir $@)
+	pip3 install $(notdir $@)
