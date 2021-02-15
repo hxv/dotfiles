@@ -13,5 +13,5 @@ ruby: /usr/bin/ruby $(ruby_gems_targets)
 
 $(ruby_gems_targets):
 	mkdir -p ~/gems
-	gem install $(notdir $@)
+	GEM_HOME="$(HOME)/gems" gem install $(notdir $@)
 
