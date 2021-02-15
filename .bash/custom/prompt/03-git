@@ -11,7 +11,7 @@ if [[ "$ref" == "HEAD" ]]; then
     ref=$(git branch --points-at HEAD 2>/dev/null)
 fi
 
-ref=$(echo "$ref" | perl -pe 's/^\* \(HEAD detached at (.+?)\)$/detached:\1/')
+ref=$(echo "$ref" | perl -pe 's/^\* \(HEAD detached at (.+?)\)(\n|$)/detached:\1\2/' | perl -pe 's/\n$//' | tr '\n' ',' | tr -s ' ')
 
 bg=45
 
