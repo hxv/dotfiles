@@ -19,6 +19,11 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
+bindsym $mod+Ctrl+Left focus output left
+bindsym $mod+Ctrl+Down focus output down
+bindsym $mod+Ctrl+Up focus output up
+bindsym $mod+Ctrl+Right focus output right
+
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
