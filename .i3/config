@@ -281,6 +281,8 @@ exec --no-startup-id synclient TapButton3=2
 exec_always --no-startup-id xrandr --dpi 96
 exec --no-startup-id ~/.screenlayout/home.bash.sh
 exec_always --no-startup-id ~/bin/i3-msg-center-floating
+exec --no-startup-id dropbox
+exec --no-startup-id keepassxc
 focus_follows_mouse no
 mouse_warping none
 
