@@ -1,6 +1,6 @@
 all_targets += i3
 
-i3_files = ~/.i3 ~/.i3status.conf ~/bin/vol-control ~/bin/status_bar.d ~/bin/status_bar ~/bin/lock ~/bin/i3-msg-center-floating
+i3_files = ~/.i3 ~/.i3status.conf ~/bin/vol-control ~/bin/status_bar.d ~/bin/status_bar ~/bin/lock ~/bin/i3-msg-center-floating ~/bin/light-control
 
 i3: /usr/bin/i3 /usr/bin/tmux /usr/bin/rofi /usr/bin/feh /usr/bin/pcregrep /usr/bin/i3lock /usr/bin/scrot /usr/bin/convert $(i3_files)
 .PHONY: i3
