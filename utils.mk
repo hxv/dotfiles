@@ -1,6 +1,6 @@
 all_targets += utils
 
-utils_simple = pcregrep whois nmap curl htop jq sshfs bindfs expect xclip fzf arandr kolourpaint okular
+utils_simple = pcregrep whois nmap curl htop jq sshfs bindfs expect xclip fzf arandr kolourpaint okular xdotool
 
 utils_simple_targets = $(addprefix /usr/bin/,$(utils_simple))
 
