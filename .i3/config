@@ -278,7 +278,7 @@ exec --no-startup-id nm-applet
 exec_always --no-startup-id setxkbmap pl
 exec --no-startup-id xkbevd -bg
 exec --no-startup-id synclient TapButton3=2
-exec --no-startup-id xrandr --dpi 96
+exec_always --no-startup-id xrandr --dpi 96
 exec --no-startup-id ~/.screenlayout/home.bash.sh
 exec_always ~/bin/i3-msg-center-floating
 focus_follows_mouse no
