@@ -11,6 +11,8 @@ bindsym $mod+Shift+Return exec xfce4-terminal
 bindsym $mod+Shift+q kill
 
 bindsym $mod+d exec rofi -show drun
+bindsym $mod+j exec ~/bin/task-rofi
+bindsym $mod+Shift+j exec ~/bin/task-rofi all
 bindsym $mod+bracketright exec ~/bin/vol-control up
 bindsym $mod+bracketleft exec ~/bin/vol-control down
 

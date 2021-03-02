@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+
+case $1 in
+    "" | "pending") filter="status:pending" ;;
+    "all") filter="status:pending or status:completed" ;;
+    *) echo -e "Usage: $0 [pending|all]" ; exit 1 ;;
+esac
+
+IFS=$'\n'
+
+tasks=()
+taskUuids=()
+
+addTask () {
+    taskUuids+=("$1")
+    tasks+=("$2")
+}
+
+while read uuid && [[ "$uuid" != "" ]]; do
+    label=$(task _get "$uuid.description")
+
+    if [[ $(task _get "$uuid.start") != "" ]]; then # bold label for started tasks
+        label="<b>$label</b>"
+    fi
+
+    if [[ $(task _get "$uuid.status") == "completed" ]]; then # striked label for completed tasks
+        label="<s>$label</s>"
+    fi
+
+    addTask "$uuid" "$label"
+done <<< $(task rc.verbose:nothing "rc.report.rofi.columns:uuid" "rc.report.rofi.labels:" "rc.report.rofi.filter:$filter" "rofi")
+
+addTask "add" "<i>add</i>" # extra item for adding tasks
+
+offset=$(echo "${tasks[*]}" | rofi -dmenu -format i -i -markup-rows)
+
+[[ "$offset" == "" || "$offset" == "-1" ]] && exit 1 # exit if no value is selected
+
+uuid="${taskUuids[$offset]}"
+
+if [[ "$uuid" == "add" ]]; then # adding tasks
+    description=$(echo '' | rofi -dmenu -l 0 -separator-style "none" -p 'Description')
+
+    [[ "$description" == "" ]] && exit 1 # no description given
+
+    task add "$description"
+
+    exit
+fi
+
+actions=()
+
+if [[ $(task _get "$uuid.status") == "pending" ]]; then # pending tasks
+    if [[ $(task _get "$uuid.start") != "" ]]; then # started tasks - allow only stoping
+        actions+=("stop")
+    else # unstarted task - allow starting and completing
+        actions+=("start")
+        actions+=("done")
+    fi
+else # completed tasks - allow only renewing
+    actions+=("renew")
+fi
+
+actions+=("modify")
+
+action=$(echo "${actions[*]}" | rofi -dmenu)
+
+[[ " ${actions[@]} " =~ " ${action} " ]] || exit 1 # exit if action is not allowed
+
+if [[ "$action" == "modify" ]]; then
+    description=$(task _get "$uuid.description")
+    description=$(echo '' | rofi -dmenu -l 0 -separator-style "none" -p 'Description' -filter "$description")
+
+    if [[ "$description" == "" ]]; then
+        exit 3
+    fi
+
+    task "$uuid" modify "$description"
+elif [[ "$action" == "renew" ]]; then # renewing task - update status
+    task "$uuid" modify status:pending
+else
+    task "$uuid" "$action"
+fi
