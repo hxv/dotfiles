@@ -1,8 +1,8 @@
 all_targets += taskwarrior
 
-taskwarrior_files = ~/.taskrc ~/.taskwarrior/holidays.rc ~/bin/task-rofi
+taskwarrior_files = ~/.taskrc ~/.taskwarrior/holidays.rc ~/bin/task-rofi ~/.task/hooks/on-modify.timewarrior
 
-taskwarrior: /usr/bin/task /usr/bin/timew $(taskwarrior_files) rofi ~/.task/hooks/on-modify.timewarrior
+taskwarrior: /usr/bin/task /usr/bin/timew $(taskwarrior_files) rofi
 .PHONY: taskwarrior
 
 /usr/bin/task:
@@ -10,10 +10,6 @@ taskwarrior: /usr/bin/task /usr/bin/timew $(taskwarrior_files) rofi ~/.task/hook
 
 /usr/bin/timew:
 	$(call install,timewarrior)
-
-~/.task/hooks/on-modify.timewarrior:
-	cp /usr/share/doc/timewarrior/ext/on-modify.timewarrior $@
-	chmod +x $@
 
 $(taskwarrior_files):
 	$(call homelink,$@)
