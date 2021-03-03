@@ -219,8 +219,8 @@ bindsym $mod+r mode "resize"
 
 set $color #bbbbbb
 set $color_bg #1c1f21
-set $color_active #bbbbbb
-set $color_active_bg #515658
+set $color_active #DDDDDD
+set $color_active_bg #4a5363
 set $color_inactive #bbbbbb
 set $color_inactive_bg #1c1f21
 set $color_inactive_2 #bbbbbb
