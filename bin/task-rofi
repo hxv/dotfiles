@@ -6,40 +6,77 @@ case $1 in
     *) echo -e "Usage: $0 [pending|all]" ; exit 1 ;;
 esac
 
-IFS=$'\n'
+itemId=""
+items=()
+itemsIds=()
+itemsActive=()
+itemsUrgent=()
+itemOffset=0
 
-tasks=()
-taskUuids=()
+addItem () {
+    itemsIds+=("$1")
+    items+=("$2")
 
-addTask () {
-    taskUuids+=("$1")
-    tasks+=("$2")
+    if [[ "$3" == "1" ]]; then
+        itemsActive+=("$itemOffset")
+    fi
+
+    if [[ "$4" == "1" ]]; then
+        itemsUrgent+=("$itemOffset")
+    fi
+
+    itemOffset=$(( "$itemOffset" + 1 ))
+}
+
+implode () { local IFS="$1"; shift; echo "$*"; }
+
+selectItem () {
+    local IFS=$'\n'
+
+    itemOffset=$(echo "${items[*]}" | rofi -dmenu -format i -markup-rows -u "$(implode , ${itemsUrgent[*]})" -a "$(implode , ${itemsActive[*]})")
+
+    if [[ "$itemOffset" == "" || "$itemOffset" == "-1" ]]; then
+        itemId=""
+    else
+        itemId="${itemsIds[$itemOffset]}"
+    fi
+
+    items=()
+    itemsIds=()
+    itemsActive=()
+    itemsUrgent=()
+    itemOffset=0
+}
+
+getText () {
+    echo '' | rofi -dmenu -l 0 -separator-style "none" -p 'Description' -filter "$1"
 }
 
 while read uuid && [[ "$uuid" != "" ]]; do
+    active=0
+    urgent=0
+
     label=$(task _get "$uuid.description")
 
-    if [[ $(task _get "$uuid.start") != "" ]]; then # bold label for started tasks
-        label="<b>$label</b>"
-    fi
+    [[ $(task _get "$uuid.start") != "" ]] && active=1
+    [[ $(task _get "$uuid.status") == "completed" ]] && urgent=1
 
-    if [[ $(task _get "$uuid.status") == "completed" ]]; then # striked label for completed tasks
-        label="<s>$label</s>"
-    fi
-
-    addTask "$uuid" "$label"
+    addItem "$uuid" "$label" "$active" "$urgent"
 done <<< $(task rc.verbose:nothing "rc.report.rofi.columns:uuid" "rc.report.rofi.labels:" "rc.report.rofi.filter:$filter" "rc.report.rofi.sort:start-" "rofi")
 
-addTask "add" "<i>add</i>" # extra item for adding tasks
+addItem "add" "<i>add</i>"
 
-offset=$(echo "${tasks[*]}" | rofi -dmenu -format i -i -markup-rows)
+selectItem
 
-[[ "$offset" == "" || "$offset" == "-1" ]] && exit 1 # exit if no value is selected
+uuid="$itemId"
 
-uuid="${taskUuids[$offset]}"
+if [[ "$uuid" == "" ]]; then
+    exit 1
+fi
+
 
 if [[ "$uuid" == "add" ]]; then # adding tasks
-    description=$(echo '' | rofi -dmenu -l 0 -separator-style "none" -p 'Description')
+    description=$(getText)
 
     [[ "$description" == "" ]] && exit 1 # no description given
 
@@ -48,24 +85,27 @@ if [[ "$uuid" == "add" ]]; then # adding tasks
     exit
 fi
 
-actions=()
-
-if [[ $(task _get "$uuid.status") == "pending" ]]; then # pending tasks
-    if [[ $(task _get "$uuid.start") != "" ]]; then # started tasks - allow only stoping
-        actions+=("stop")
-    else # unstarted task - allow starting and completing
-        actions+=("start")
-        actions+=("done")
+if [[ $(task _get "$uuid.status") == "pending" ]]; then
+    if [[ $(task _get "$uuid.start") != "" ]]; then
+        addItem "stop" "<i>stop</i>"
+    else
+        addItem "start" "<i>start</i>"
+        addItem "done" "<i>done</i>"
     fi
-else # completed tasks - allow only renewing
-    actions+=("renew")
+else
+    addItem "renew" "<i>renew</i>"
+    addItem "delete" "<i>delete</i>"
 fi
 
-actions+=("modify")
+addItem "modify" "<i>modify</i>"
 
-action=$(echo "${actions[*]}" | rofi -dmenu)
+selectItem
 
-[[ " ${actions[@]} " =~ " ${action} " ]] || exit 1 # exit if action is not allowed
+action="$itemId"
+
+if [[ "$action" == "" ]]; then
+    exit 1
+fi
 
 if [[ "$action" == "modify" ]]; then
     description=$(task _get "$uuid.description")
@@ -78,6 +118,15 @@ if [[ "$action" == "modify" ]]; then
     task "$uuid" modify "$description"
 elif [[ "$action" == "renew" ]]; then # renewing task - update status
     task "$uuid" modify status:pending
+elif [[ "$action" == "delete" ]]; then
+    addItem "yes" "<i>yes</i>"
+    addItem "no" "<i>no</i>"
+
+    selectItem
+
+    if [[ "$itemId" == "yes" ]]; then
+        task "$uuid" rc.confirmation:off delete
+    fi
 else
     task "$uuid" "$action"
 fi
