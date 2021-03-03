@@ -1,0 +1,116 @@
+configuration {
+    modi: "drun,window,run,ssh";
+    width: 30;
+    lines: 10;
+    font: "DejaVu Sans Mono for Powerline 9";
+    terminal: "xfce4-terminal";
+    ssh-command: "{terminal} -e "tmux -c '{ssh-client} {host}'"";
+    run-shell-command: "{terminal} -e "tmux -c '{cmd}'"";
+    matching: "fuzzy";
+}
+
+* {
+    red:                         #FF6B68;
+    blue:                        #5394EC;
+
+    separatorcolor:              #515658;
+    bordercolor:                 @separatorcolor;
+    border-color:                @separatorcolor;
+
+    foreground:                  #BBBBBB;
+    background:                  #2B2B2B;
+    background-color:            @background;
+
+    normal-foreground:           @foreground;
+    normal-background:           @background;
+    active-foreground:           @blue;
+    active-background:           @background;
+    urgent-foreground:           @red;
+    urgent-background:           @background;
+
+    selected-normal-foreground:  @background;
+    selected-normal-background:  @foreground;
+    selected-active-foreground:  @active-background;
+    selected-active-background:  @active-foreground;
+    selected-urgent-foreground:  @urgent-background;
+    selected-urgent-background:  @urgent-foreground;
+
+    alternate-normal-foreground: @foreground;
+    alternate-normal-background: @background;
+    alternate-active-foreground: @active-foreground;
+    alternate-active-background: @active-background;
+    alternate-urgent-foreground: @urgent-foreground;
+    alternate-urgent-background: @urgent-background;
+
+    spacing:                     4px;
+}
+
+#window {
+    background-color: @background;
+    border:           3px;
+    padding:          6px;
+}
+
+#mainbox { border: 0; padding: 0; }
+
+#message {
+    border:       3px solid 0 0;
+    border-color: @separatorcolor;
+    padding:      6px;
+}
+
+#textbox {
+    text-color: @foreground;
+}
+
+#listview {
+    fixed-height: 1;
+    border:       1px solid 0 0;
+    border-color: @separatorcolor;
+    spacing:      1px;
+    scrollbar:    true;
+    padding:      8px 0px 0px ;
+}
+
+#element {
+    border:  0;
+    padding: 2px;
+}
+
+#element.normal.normal    { background-color: @normal-background;           text-color: @normal-foreground;           }
+#element.normal.urgent    { background-color: @urgent-background;           text-color: @urgent-foreground;           }
+#element.normal.active    { background-color: @active-background;           text-color: @active-foreground;           }
+#element.selected.normal  { background-color: @selected-normal-background;  text-color: @selected-normal-foreground;  }
+#element.selected.urgent  { background-color: @selected-urgent-background;  text-color: @selected-urgent-foreground;  }
+#element.selected.active  { background-color: @selected-active-background;  text-color: @selected-active-foreground;  }
+#element.alternate.normal { background-color: @alternate-normal-background; text-color: @alternate-normal-foreground; }
+#element.alternate.urgent { background-color: @alternate-urgent-background; text-color: @alternate-urgent-foreground; }
+#element.alternate.active { background-color: @alternate-active-background; text-color: @alternate-active-foreground; }
+
+#scrollbar {
+    handle-width: 3px;
+    padding:      0 0 0 7px;
+    handle-color: @separatorcolor;
+}
+
+#button.selected {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+
+#inputbar {
+    spacing:    0;
+    text-color: @normal-foreground;
+    padding:    3px;
+    children: [ prompt, textbox-prompt-colon, entry ];
+}
+
+#entry  { spacing: 0; text-color: @normal-foreground; }
+#prompt { spacing: 0; text-color: @normal-foreground; }
+
+#textbox-prompt-colon {
+    expand:     false;
+    str:        ":";
+    margin:     0 5px 0 0;
+    text-color: @normal-foreground;
+}

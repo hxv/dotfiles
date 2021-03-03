@@ -1,6 +1,6 @@
 all_targets += rofi
 
-rofi_files = ~/.config/rofi/config
+rofi_files = ~/.config/rofi/config.rasi
 
 rofi: /usr/bin/rofi $(rofi_files)
 .PHONY: rofi
