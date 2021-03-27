@@ -4,7 +4,7 @@ journal.time=yes
 
 data.location=~/.task
 
-include /usr/share/taskwarrior/solarized-dark-256.theme
+include /usr/local/share/doc/task/rc/solarized-dark-256.theme
 include ~/.taskwarrior/holidays.rc
 
 taskd.certificate=~\/.taskwarrior\/client.cert.pem
