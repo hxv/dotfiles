@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+mouse='Logitech M705'
+
+xinput --set-button-map "$mouse" 1 2 3 4 5 6 7 2 9 10 11 12 13 14 15 16 17 18 19 20
+
+xinput --set-prop "$mouse" 'libinput Accel Profile Enabled' 0, 1
+xinput --set-prop "$mouse" 'libinput Accel Speed' 0.75
+xinput --set-prop "$mouse" 'Coordinate Transformation Matrix' 0.6 0 0 0 1 0 0 0 1
+
