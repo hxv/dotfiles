@@ -260,6 +260,14 @@ nnoremap <leader>gd :Gvdiff<CR>
 nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>
 
+" highlighting lines
+nnoremap <silent> <Leader>h :call matchadd('LineHighlight', '\%'.line('.').'l')<CR>
+nnoremap <silent> <Leader>hw :call matchadd('LineHighlightWarning', '\%'.line('.').'l')<CR>
+nnoremap <silent> <Leader>hi :call matchadd('LineHighlightInfo', '\%'.line('.').'l')<CR>
+nnoremap <silent> <Leader>hs :call matchadd('LineHighlightSuccess', '\%'.line('.').'l')<CR>
+
+nnoremap <silent> <Leader>hc :call clearmatches()<CR>
+
 " /SHORTCUTS / REMAPS
 
 
@@ -278,3 +286,11 @@ set background=dark
 colors deus
 
 " /COLOR_SCHEME
+
+" highlighted lines colors
+hi LineHighlight ctermbg=240
+hi LineHighlightError ctermbg=124
+hi LineHighlightWarning ctermbg=166
+hi LineHighlightInfo ctermbg=17
+hi LineHighlightSuccess ctermbg=22
+
