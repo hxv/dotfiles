@@ -262,6 +262,7 @@ nnoremap gdl :diffget //3<CR>
 
 " highlighting lines
 nnoremap <silent> <Leader>h :call matchadd('LineHighlight', '\%'.line('.').'l')<CR>
+nnoremap <silent> <Leader>he :call matchadd('LineHighlightError', '\%'.line('.').'l')<CR>
 nnoremap <silent> <Leader>hw :call matchadd('LineHighlightWarning', '\%'.line('.').'l')<CR>
 nnoremap <silent> <Leader>hi :call matchadd('LineHighlightInfo', '\%'.line('.').'l')<CR>
 nnoremap <silent> <Leader>hs :call matchadd('LineHighlightSuccess', '\%'.line('.').'l')<CR>
