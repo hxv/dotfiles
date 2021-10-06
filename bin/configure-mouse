@@ -8,3 +8,9 @@ xinput --set-prop "$mouse" 'libinput Accel Profile Enabled' 0, 1
 xinput --set-prop "$mouse" 'libinput Accel Speed' 0.75
 xinput --set-prop "$mouse" 'Coordinate Transformation Matrix' 0.6 0 0 0 1 0 0 0 1
 
+trackball='Kensington Expert Mouse'
+
+xinput --set-button-map "$trackball" 1 2 3 4 5 6 7 3 9
+
+xinput --set-prop "$trackball" 'libinput Accel Profile Enabled' 0, 1
+xinput --set-prop "$trackball" 'libinput Accel Speed' 0.3
