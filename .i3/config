@@ -162,29 +162,29 @@ bindsym $mod+Ctrl+Shift+KP_8 move container to workspace $workspace18
 bindsym $mod+Ctrl+Shift+KP_9 move container to workspace $workspace19
 bindsym $mod+Ctrl+Shift+KP_0 move container to workspace $workspace20
 
-set $monitor_left eDP-1
-set $monitor_right HDMI-1
+set $monitor_down eDP-1-1
+set $monitor_up HDMI-1-1
 
-workspace $workspace1 output $monitor_left
-workspace $workspace2 output $monitor_left
-workspace $workspace3 output $monitor_right
-workspace $workspace4 output $monitor_right
-workspace $workspace5 output $monitor_right
-workspace $workspace6 output $monitor_right
-workspace $workspace7 output $monitor_left
-workspace $workspace8 output $monitor_right
-workspace $workspace9 output $monitor_right
-workspace $workspace10 output $monitor_left
-workspace $workspace11 output $monitor_left
-workspace $workspace12 output $monitor_left
-workspace $workspace13 output $monitor_left
-workspace $workspace14 output $monitor_left
-workspace $workspace15 output $monitor_right
-workspace $workspace16 output $monitor_right
-workspace $workspace17 output $monitor_right
-workspace $workspace18 output $monitor_right
-workspace $workspace19 output $monitor_right
-workspace $workspace20 output $monitor_right
+workspace $workspace1 output $monitor_up
+workspace $workspace2 output $monitor_up
+workspace $workspace3 output $monitor_down
+workspace $workspace4 output $monitor_down
+workspace $workspace5 output $monitor_down
+workspace $workspace6 output $monitor_down
+workspace $workspace7 output $monitor_up
+workspace $workspace8 output $monitor_down
+workspace $workspace9 output $monitor_down
+workspace $workspace10 output $monitor_up
+workspace $workspace11 output $monitor_up
+workspace $workspace12 output $monitor_up
+workspace $workspace13 output $monitor_up
+workspace $workspace14 output $monitor_up
+workspace $workspace15 output $monitor_down
+workspace $workspace16 output $monitor_down
+workspace $workspace17 output $monitor_down
+workspace $workspace18 output $monitor_down
+workspace $workspace19 output $monitor_down
+workspace $workspace20 output $monitor_down
 
 #assign [class="Google-chrome"] $workspace1
 #assign [class="Firefox"] $workspace1
