@@ -6,7 +6,7 @@ set -o errexit -o noclobber -o nounset -o pipefail
 for x in /tmp/.X11-unix/*; do
     displayNum=$(echo $x | sed 's#/tmp/.X11-unix/X##')
 
-    activeUser=$(pinky | grep -m1 ":$1" | awk '{print $1}')
+    activeUser=$(pinky | grep -m1 -P ":$displayNum$" | awk '{print $1}')
 
     if [[ "$activeUser" == "" ]]; then
         continue
