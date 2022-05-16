@@ -2,13 +2,13 @@
 
 file=~/.cache/last-backup-date
 
-echo -n " "
-
 if [[ ! -f $file ]]; then
-    echo -n "No backup!"
+    text=" No backup!" jq -c -M -n '{full_text: "No backup!", color: env.color_bad}'
 
     exit
 fi
+
+echo -n " "
 
 backup_date=$(cat ~/.cache/last-backup-date)
 

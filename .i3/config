@@ -244,6 +244,7 @@ bar {
         binding_mode       $color_binding_mode_bg $color_binding_mode_bg $color_binding_mode
 #        active_workspace   #000000 #000000 #000000
     }
+    separator_symbol "  "
     status_command ~/bin/status_bar
 }
 

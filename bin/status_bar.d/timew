@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+task=$(timew | head -n 1 | cut -d ' ' -f 3-)
+
+if [[ "$task" == "" || "$task" == "no active time tracking." ]]; then
+    exit
+fi
+
+export task=" $task"
+
+jq -n -M -c '{full_text: env.task, color: env.color_degraded}'

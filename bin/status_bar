@@ -3,31 +3,58 @@
 SCRIPT=$(basename "$0")
 DIR=$(dirname "$0")
 
+IFS=$'\n'
+
+export color_good='#DDDDDD'
+export color_degraded='#AE8ABE'
+export color_bad='#FF6B68'
+
+n=0
+
 i3status | while :
 do
-	read LINE
+	read line
 
-    for PLACEHOLDER in $(echo "$LINE" | grep -P -o "placeholder_\w+"); do
-        PLACEHOLDER=$(echo "$PLACEHOLDER" | sed 's/placeholder_//')
+    if [[ $n == 0 || $n == 1 ]]; then
+        echo "$line"
 
-        if [[ -f "$DIR/$SCRIPT.d/$PLACEHOLDER" ]]; then
-            VALUE=$("$DIR/$SCRIPT.d/$PLACEHOLDER")
+        n=$(( $n + 1 ))
+
+        continue
+    fi
+
+    if [[ "${line:0:1}" == "," ]]; then
+        line="${line:1}"
+    fi
+
+    parsed=($(jq -c -M '.[]' <<< "$line"))
+
+    buffer='['
+
+    for part in "${parsed[@]}"; do
+        script=$(echo "$part" | grep -o -P 'placeholder_[^"]+' | cut -d _ -f 2-)
+
+        if [[ "$script" == "" ]]; then
+            buffer+="$part,"
         else
-            VALUE="script $PLACEHOLDER not found"
-        fi
+            export script
 
-        LINE=$(echo "$LINE" | sed "s/placeholder_$PLACEHOLDER/$VALUE/")
+            result=$("$DIR/$SCRIPT.d/$script")
+
+            if [[ "$result" == "" ]]; then
+                continue
+            fi
+
+            if [[ "${result:0:1}" != "{" ]]; then
+                result='{"full_text": "'$result'"}'
+            fi
+
+            buffer+=$(jq -c -M '{full_text: .full_text, instance: env.script, name: env.script, markup: "none", color: .color}' <<< "$result")
+            buffer+=','
+        fi
     done
 
-#	while read SCRIPT; do
-#		R=$("$SCRIPT")
-#
-#		if [ "$R" == "" ]; then
-#			continue
-#		fi
-#
-#		line="$R | $line"
-#	done <<< "$(find "$0.d" -maxdepth 1 -type f | sort -h)"
+    buffer="${buffer:0:-1}],"
 
-	echo "$LINE"
+    echo "$buffer"
 done
