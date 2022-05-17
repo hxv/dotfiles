@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
-task=$(timew | head -n 1 | cut -d ' ' -f 3-)
+task=$(timew | head -n 1 | grep -P -o '[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}')
 
-if [[ "$task" == "" || "$task" == "no active time tracking." ]]; then
+if [[ "$task" == "" ]]; then
     exit
 fi
+
+task=$(task _get "$task".description)
 
 export task=" $task"
 
