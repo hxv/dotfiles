@@ -6,6 +6,7 @@
     debug-ssh = -c core.sshCommand=\"ssh -vvv\" fetch
     add-deleted = "!f() { git status -uno --porcelain=2 | grep -P '^1 \\.D' | cut -d ' ' -f 9- | xargs -I {} git add {}; }; f"
     b = rev-parse --abbrev-ref HEAD
+    l = log --oneline --decorate
 [push]
     default = current
 [pull]
