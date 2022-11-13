@@ -8,7 +8,7 @@ taskwarrior: /usr/bin/task /usr/bin/timew $(taskwarrior_files) rofi
 /usr/bin/task:
 	cd /tmp && \
 	  rm -rf taskwarrior && \
-	  git clone https://github.com/GothenburgBitFactory/taskwarrior.git --branch=master && \
+	  git clone https://github.com/GothenburgBitFactory/taskwarrior.git --branch=stable && \
 	  cd taskwarrior && \
 	  $(call install,libgnutls28-dev) && \
 	  $(call install,uuid-dev) && \
@@ -20,7 +20,7 @@ taskwarrior: /usr/bin/task /usr/bin/timew $(taskwarrior_files) rofi
 /usr/bin/timew:
 	cd /tmp && \
 	  rm -rf timewarrior && \
-	  git clone --recurse-submodules https://github.com/GothenburgBitFactory/timewarrior.git --branch=master && \
+	  git clone --recurse-submodules https://github.com/GothenburgBitFactory/timewarrior.git --branch=stable && \
 	  cd timewarrior && \
 	  cmake -DCMAKE_BUILD_TYPE=release . && \
 	  make && \
