@@ -124,6 +124,10 @@ let g:workspace_persist_undo_history = 0
 let g:indentguides_spacechar = '┆'
 let g:indentguides_tabchar = '¦'
 
+" Code::Stats
+" let g:codestats_api_key = ''
+let g:airline_section_x = airline#section#create_right(['tagbar', 'filetype', '%{CodeStatsXp()}'])
+
 " /PLUGINS SETTINGS
 
 

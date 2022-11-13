@@ -21,7 +21,7 @@
 	url = https://github.com/mattn/emmet-vim
 [submodule ".vim/bundle/vim-better-whitespace"]
 	path = .vim/bundle/vim-better-whitespace
-	url = git://github.com/ntpeters/vim-better-whitespace.git
+	url = https://github.com/ntpeters/vim-better-whitespace.git
 [submodule ".vim/bundle/file-line"]
 	path = .vim/bundle/file-line
 	url = https://github.com/bogado/file-line
@@ -52,3 +52,6 @@
 [submodule ".tmux/tmux-logging"]
 	path = .tmux/tmux-logging
 	url = https://github.com/hxv/tmux-logging
+[submodule ".vim/bundle/code-stats-vim"]
+	path = .vim/bundle/code-stats-vim
+	url = https://gitlab.com/code-stats/code-stats-vim.git

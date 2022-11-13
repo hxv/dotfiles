@@ -4,7 +4,7 @@ vim_files = ~/.vim ~/.config/nvim ~/.vimrc
 
 vim_ppa = /etc/apt/sources.list.d/neovim-ppa-ubuntu-unstable-$(ubuntu_codename).list
 
-vim: /usr/bin/nvim /usr/local/bin/vim $(vim_files)
+vim: /usr/bin/nvim /usr/local/bin/vim $(vim_files) pynvim
 .PHONY: vim
 
 $(vim_ppa):
@@ -17,6 +17,10 @@ $(vim_ppa):
 /usr/local/bin/vim: /usr/bin/nvim
 	sudo rm -rf $@
 	sudo ln -s /usr/bin/nvim $@
+
+pynvim: /usr/bin/pip3
+	pip3 install pynvim
+.PHONY: pynvim
 
 $(vim_files):
 	$(call homelink,$@)
