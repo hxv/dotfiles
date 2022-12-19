@@ -14,3 +14,7 @@ xinput --set-button-map "$trackball" 1 2 3 4 5 6 7 3 9
 
 xinput --set-prop "$trackball" 'libinput Accel Profile Enabled' 0, 1
 xinput --set-prop "$trackball" 'libinput Accel Speed' 0.3
+
+touchscreen='FTS3528:00 2808:1015'
+
+xinput map-to-output "$touchscreen" eDP
