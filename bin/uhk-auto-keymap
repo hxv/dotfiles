@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+script=$(basename "$0")
+lockfile="/tmp/$script.lock"
+
+if [[ -f "$lockfile" ]]; then
+    i3-nagbar -m "$script is already running. You can kill current instance, remove file $lockfile and retry."
+
+    exit 1
+fi
+
+> "$lockfile"
+
+IFS=$'\n'
+
+i3-msg -t subscribe -m '["window"]' | jq -M -r -c --unbuffered 'select(.container.focused) | "\(.container.window_properties.instance)[\(.container.window_properties.title)]"' |
+while read -r title; do
+    if [[ "$title" =~ ^xfce4-terminal\[Terminal\ -\ vim] ]]; then
+        keymap=VIM
+    else
+        keymap=HXV
+    fi
+
+    uhk-cmd "switchKeymap $keymap"
+done

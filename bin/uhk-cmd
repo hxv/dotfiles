@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+hidraw=$(grep 'UHK 60' /sys/class/hidraw/hidraw*/device/uevent | head -n 1 | cut -d / -f 5)
+
+if [[ "$hidraw" == "" ]]; then
+    i3-nagbar -m 'UHK not found'
+
+    exit 1
+fi
+
+echo -e "\x14${*}" > /dev/hidraw4
+

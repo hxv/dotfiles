@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+script=$(basename "$0")
+lockfile="/tmp/$script.lock"
+
+if [[ -f "$lockfile" ]]; then
+    i3-nagbar -m "$script is already running. You can kill current instance, remove file $lockfile and retry."
+
+    exit 1
+fi
+
+> "$lockfile"
+
+IFS=$'\n'
+
+i3-msg -t subscribe -m '["window"]' | jq -M -r -c --unbuffered 'select(.change == "urgent")' |
+while read -r change; do
+    if [[ $(i3-msg -t get_tree | jq -M -r -c '[.. | objects | select(.urgent)] | length') == "0" ]]; then
+        uhk-cmd 'set backlight.strategy functional'
+        uhk-cmd 'set leds.brightness 1'
+    else
+        uhk-cmd 'set backlight.constantRgb.rgb 255 0 255'
+        uhk-cmd 'set leds.brightness 255'
+    fi
+done
