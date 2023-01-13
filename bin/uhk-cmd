@@ -8,5 +8,5 @@ if [[ "$hidraw" == "" ]]; then
     exit 1
 fi
 
-echo -e "\x14${*}" > /dev/hidraw4
+echo -e "\x14${*}" > "/dev/$hidraw"
 
