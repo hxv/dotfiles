@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+card=bluez_card.E8_7F_6B_26_5C_73
+
+currentProfile=$({ pactl list cards ; echo ; } | grep -A500 "Name: $card" | grep -m 1 -P '^$' -B500 | grep 'Active Profile: ' | cut -d ':' -f 2- | tr -d ' ')
+
+if [[ "$currentProfile" == "" ]]; then
+    exit 1
+fi
+
+if [[ "$currentProfile" == "a2dp-sink-aac" ]]; then
+    newProfile="headset-head-unit-msbc"
+else
+    newProfile="a2dp-sink"
+fi
+
+pactl set-card-profile "$card" "$newProfile"

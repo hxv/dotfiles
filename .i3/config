@@ -16,6 +16,7 @@ bindsym $mod+j exec ~/bin/task-rofi
 bindsym $mod+Shift+j exec ~/bin/task-rofi all
 bindsym XF86AudioRaiseVolume exec ~/bin/vol-control up
 bindsym XF86AudioLowerVolume exec ~/bin/vol-control down
+bindsym $mod+b exec ~/bin/vol-mode
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
