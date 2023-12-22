@@ -5,5 +5,6 @@ fonts_files = ~/.fonts
 fonts: $(fonst_files)
 .PHONY: fonts
 
-$(fonst_files):
+$(fonts_files):
 	$(call homelink,$@)
+	sudo fc-cache -f -v
