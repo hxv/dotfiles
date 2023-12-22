@@ -1,6 +1,6 @@
 all_targets += python
 
-pip_utils = termdown youtube-dl yq
+pip_utils = termdown yt-dlp yq
 
 pip_utils_targets = $(addprefix ~/.local/bin/,$(pip_utils))
 

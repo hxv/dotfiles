@@ -14,4 +14,4 @@ alias xgrep='cut -d ":" -f 1,2 | tr "\n" " " | head -c -1 ; echo'
 alias cleanup-history='cat -n ~/.bash_history | sort -rk2 | sort -uk2 | sort -nk1 | cut -f2- > /tmp/.bash_history ; mv /tmp/.bash_history ~/.bash_history'
 alias sudo='sudo ' # https://askubuntu.com/a/22043
 alias rm='safe-rm'
-alias youtube-dl='youtube-dl --format="best[height<=720]" --no-mtime'
+alias youtube-dl='yt-dlp -N 5 --format="best[height<=720]" --no-mtime'
