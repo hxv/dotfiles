@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+cache_file=/tmp/i3-code-stats
+
+find "$cache_file" -mmin +3 -type f -delete 2>/dev/null
+if [[ ! -f "$cache_file" ]]; then
+    curl -s 'https://codestats.net/api/users/hxv' \
+       | jq -M -c '{full_text: (" " + (.new_xp|tostring) + " xp / " + (0.025*(.total_xp|sqrt)|floor|tostring) + " lvl")}' \
+        > "$cache_file"
+fi
+
+cat "$cache_file"
