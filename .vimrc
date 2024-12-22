@@ -30,6 +30,9 @@ set novisualbell
 set t_vb=
 set tm=500
 
+" disable mouse
+set mouse=
+
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
