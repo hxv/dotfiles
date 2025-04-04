@@ -183,9 +183,6 @@ endfunction
 " fast save with ,w
 nmap <leader>w :w!<cr>
 
-" toggle paste mode with F2
-set pastetoggle=<F2>
-
 " highlight word under cursor using ,/
 nmap <leader>/ :Ggr <cword><CR>
 nmap <leader>? :Ggr ''<left>
