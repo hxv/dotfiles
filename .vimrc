@@ -140,7 +140,7 @@ let g:airline_section_x = airline#section#create_right(['tagbar', 'filetype', '%
 " FUNCTIONS
 
 " hightlight word under cursor
-function Hlw()
+function! Hlw()
     exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '\/'))
 endfunction
 
@@ -163,14 +163,14 @@ function! H_num_switch()
     endif
 endfunction
 
-:command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
+:command! -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
 
 function! WriteSudo()
     :silent w !sudo tee %
     :e!
 endfunction
 
-:command W call WriteSudo()
+:command! W call WriteSudo()
 
 " /FUNCTIONS
 
