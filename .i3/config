@@ -19,20 +19,23 @@ bindsym XF86AudioRaiseVolume exec ~/bin/vol-control up
 bindsym XF86AudioLowerVolume exec ~/bin/vol-control down
 bindsym $mod+b exec ~/bin/vol-mode
 
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
 bindsym $mod+Up focus up
+bindsym $mod+i focus up
+bindsym $mod+Down focus down
+bindsym $mod+k focus down
+bindsym $mod+Left focus left
+bindsym $mod+j focus left
 bindsym $mod+Right focus right
+bindsym $mod+l focus right
 
-bindsym $mod+Ctrl+Left focus output left
-bindsym $mod+Ctrl+Down focus output down
-bindsym $mod+Ctrl+Up focus output up
-bindsym $mod+Ctrl+Right focus output right
-
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+i move up
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+j move left
 bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+l move right
 
 bindsym $mod+backslash split h
 bindsym $mod+minus split v
