@@ -1,19 +1,18 @@
 #!/usr/bin/env bash
 
-dir="/sys/class/backlight/intel_backlight"
+cmd="pkexec xfpm-power-backlight-helper"
 
-if [[ $(stat --format '%a' "$dir/brightness") != "666" ]]; then
-    sudo chmod 666 /sys/class/backlight/intel_backlight/brightness
-fi
+maxLevel=$($cmd --get-max-brightness)
+currentLevel=$($cmd --get-brightness)
 
-maxLevel=$(cat "$dir/max_brightness")
-currentLevel=$(cat "$dir/brightness")
+min=500
+step=2000
 
 if [[ "$1" == "current" ]]; then
     echo "scale=2; $currentLevel / $maxLevel * 100" | bc -l | cut -d '.' -f 1
 elif [[ "$1" == "up" ]]; then
-    echo "scale=2; new = $currentLevel + 500; if (new >= $maxLevel) $maxLevel else new" | bc -l > "$dir/brightness"
+    $cmd --set-brightness $(echo "scale=2; new = $currentLevel + $step; if (new >= $maxLevel) $maxLevel else new" | bc -l)
 elif [[ "$1" == "down" ]]; then
-    echo "scale=2; new = $currentLevel - 500; if (new <= 500) 500 else new" | bc -l > "$dir/brightness"
+    $cmd --set-brightness $(echo "scale=2; new = $currentLevel - $step; if (new <= $min) $min else new" | bc -l)
 fi
 
