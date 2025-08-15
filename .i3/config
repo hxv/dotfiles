@@ -19,6 +19,8 @@ bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- unmute
 bindsym XF86AudioMute exec amixer -D pulse sset Master mute
 bindsym $mod+b exec ~/bin/vol-mode
+bindsym XF86MonBrightnessUp exec ~/bin/light-control up
+bindsym XF86MonBrightnessDown exec ~/bin/light-control down
 
 bindsym $mod+Up focus up
 bindsym $mod+i focus up
@@ -227,8 +229,6 @@ client.background       $color_bg
 
 bindsym $mod+Shift+x exec --no-startup-id ~/bin/lock
 bindsym $mod+space exec ~/bin/top-menu
-bindsym $mod+apostrophe exec --no-startup-id light-control up
-bindsym $mod+semicolon exec --no-startup-id light-control down
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
