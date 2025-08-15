@@ -236,9 +236,9 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 exec_always --no-startup-id xfsettingsd --sm-client-disable --daemon --replace
 exec_always --no-startup-id feh --bg-max ~/.i3/wallpaper.png
 exec_always --no-startup-id gpg-agent --daemon --enable-ssh-support
+exec_always --no-startup-id ~/bin/configure-keyboard
+exec_always --no-startup-id ~/bin/configure-mouse
 exec --no-startup-id nm-applet
-exec_always --no-startup-id setxkbmap pl
-exec --no-startup-id xkbevd -bg
 exec --no-startup-id synclient TapButton3=2
 exec_always xrandr --dpi 96
 exec --no-startup-id ~/.screenlayout/home.bash.sh
@@ -248,7 +248,6 @@ exec --no-startup-id keepassxc
 exec --no-startup-id /usr/local/bin/QNAP/QsyncClient/Qsync.sh
 exec_always --no-startup-id ~/bin/uhk-urgent
 exec_always --no-startup-id ~/bin/uhk-auto-keymap
-exec_always ~/bin/configure-mouse
 focus_follows_mouse no
 mouse_warping none
 
@@ -257,5 +256,4 @@ no_focus [title="^\.\.\.$| - Floating YouTube$"]
 
 assign [class="jetbrains-phpstorm"] $workspace2
 assign [class="zoom"] $workspace7
-
 
