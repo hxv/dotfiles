@@ -13,8 +13,8 @@ bindsym $alt+F4 kill
 bindsym $mod+x kill
 
 bindsym $mod+d exec rofi -show drun
-bindsym $mod+j exec ~/bin/task-rofi
-bindsym $mod+Shift+j exec ~/bin/task-rofi all
+bindsym $mod+h exec ~/bin/task-rofi
+bindsym $mod+Shift+h exec ~/bin/task-rofi all
 bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- unmute
 bindsym XF86AudioMute exec amixer -D pulse sset Master mute
