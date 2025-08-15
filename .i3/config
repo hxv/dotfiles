@@ -233,6 +233,7 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
+exec_always --no-startup-id xfsettingsd --sm-client-disable --daemon --replace
 exec_always --no-startup-id feh --bg-max ~/.i3/wallpaper.png
 exec_always --no-startup-id gpg-agent --daemon --enable-ssh-support
 exec --no-startup-id nm-applet
@@ -250,8 +251,6 @@ exec_always --no-startup-id ~/bin/uhk-auto-keymap
 exec_always ~/bin/configure-mouse
 focus_follows_mouse no
 mouse_warping none
-
-exec --no-startup-id xfsettingsd --sm-client-disable &
 
 for_window [title="^\.\.\.$| - Floating YouTube$"] floating enable ; sticky enable ; [instance="google-chrome"] focus
 no_focus [title="^\.\.\.$| - Floating YouTube$"]
