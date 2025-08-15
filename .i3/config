@@ -176,7 +176,7 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+apostrophe mode "resize"
 
 set $color #bbbbbb
 set $color_bg #1c1f21
