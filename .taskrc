@@ -7,3 +7,10 @@ data.location=~/.task
 include /usr/local/share/doc/task/rc/solarized-dark-256.theme
 include ~/.taskwarrior/holidays.rc
 
+color.uda.priority.H=color1
+color.uda.priority.M=color3
+color.uda.priority.L=color246
+
+urgency.uda.priority.H.coefficient=5.0
+urgency.uda.priority.M.coefficient=2.0
+urgency.uda.priority.L.coefficient=-1.0
