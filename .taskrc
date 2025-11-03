@@ -9,7 +9,7 @@ include ~/.taskwarrior/holidays.rc
 
 color.uda.priority.H=color1
 color.uda.priority.M=color3
-color.uda.priority.L=color246
+color.uda.priority.L=color242
 
 color.tagged=
 
