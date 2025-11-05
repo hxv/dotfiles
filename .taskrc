@@ -12,6 +12,7 @@ color.uda.priority.M=color3
 color.uda.priority.L=color242
 
 color.tagged=
+color.active=color140 bold
 
 urgency.uda.priority.H.coefficient=5.0
 urgency.uda.priority.M.coefficient=2.0
