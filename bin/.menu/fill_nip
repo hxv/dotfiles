@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+gen_rand() {
+    RET=""
+    for I in {0..8}; do
+        RET="$RET$(( $RANDOM % 10 ))"
+    done
+
+    echo "$RET"
+}
+
+calc_checksum() {
+    NIP="$1"
+    SUM=0
+
+    W=(6 5 7 2 3 4 5 6 7)
+    for I in {0..8}; do
+        SUM=$(echo "$SUM + ${W[$I]} * ${NIP:$I:1}" | bc)
+    done
+
+    echo "$SUM % 11" | bc
+}
+
+CHECKSUM="10"
+while [[ "$CHECKSUM" == "10" ]]; do
+    NIP=$(gen_rand)
+    CHECKSUM=$(calc_checksum "$NIP")
+done
+
+xdotool type "$NIP$CHECKSUM"

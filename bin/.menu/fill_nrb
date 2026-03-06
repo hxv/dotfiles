@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+NUMER_ROZLICZENIOWY="11400000"
+NUMER_RACHUNKU=""
+
+for I in $(seq 1 16); do
+    R=$(( $RANDOM % 10 ))
+
+    NUMER_RACHUNKU="$NUMER_RACHUNKU$R"
+done
+
+SUM=$(printf "%02d" $(echo "97 - (${NUMER_ROZLICZENIOWY}${NUMER_RACHUNKU}252100 % 97) + 1" | bc))
+
+xdotool type "${SUM}${NUMER_ROZLICZENIOWY}${NUMER_RACHUNKU}"
+
