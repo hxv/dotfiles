@@ -10,5 +10,8 @@ python: /usr/bin/pip3 $(pip_utils_targets)
 /usr/bin/pip3:
 	$(call install,python3-pip)
 
-$(pip_utils_targets): /usr/bin/pip3
-	pip3 install $(notdir $@)
+~/.local/bin/pip3:
+	python3 -m venv ~/.local
+
+$(pip_utils_targets): ~/.local/bin/pip3
+	~/.local/bin/pip3 install $(notdir $@)

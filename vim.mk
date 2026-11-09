@@ -18,8 +18,8 @@ $(vim_ppa):
 	sudo rm -rf $@
 	sudo ln -s /usr/bin/nvim $@
 
-pynvim: /usr/bin/pip3
-	pip3 install pynvim
+pynvim: ~/.local/bin/pip3
+	~/.local/bin/pip3 install pynvim
 .PHONY: pynvim
 
 $(vim_files):
