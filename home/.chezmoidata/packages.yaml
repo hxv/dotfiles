@@ -2,3 +2,4 @@ packages:
   apt:
     - rofi
     - pgcli
+    - ranger
