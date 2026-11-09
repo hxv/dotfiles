@@ -2,7 +2,7 @@ all_targets += taskwarrior
 
 taskwarrior_files = ~/.taskrc ~/.taskwarrior/holidays.rc ~/bin/task-rofi ~/.task/hooks/on-modify.timewarrior
 
-taskwarrior: /usr/bin/task /usr/bin/timew $(taskwarrior_files) rofi
+taskwarrior: /usr/bin/task /usr/bin/timew $(taskwarrior_files)
 .PHONY: taskwarrior
 
 /usr/bin/task:
