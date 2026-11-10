@@ -27,9 +27,12 @@ packages:
     - uptimed
     - gparted
     - npm
+    - php8.5-{cli,amqp,ast,bcmath,curl,dev,gd,gmp,intl,ldap,mbstring,memcache,memcached,mongodb,mysql,pgsql,readline,redis,soap,sqlite3,xdebug,xml,xsl,yaml,zip} # zadziała tylko z bash bez escape argumentów
   snap:
     - spotify
     - fx
     - phpstorm
   npm:
     - safe-rm
+  composer:
+    - psy/psysh
