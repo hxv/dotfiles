@@ -4,3 +4,11 @@ bin/composer:
   executable: true
   checksum:
     sha256: "dd158c0afd41d15fac89e1b4e47b5d42911fe316c3687cd5edac98319b25d028"
+
+bin/lnav:
+  type: archive-file
+  url: https://github.com/tstack/lnav/releases/download/v0.14.1/lnav-0.14.1-linux-musl-x86_64.zip
+  path: lnav-0.14.1/lnav
+  executable: true
+  checksum:
+    sha256: "ec1750f0a6962eed6bb85ad4249457894f190e961277c56d69c47eecce9e705e"
