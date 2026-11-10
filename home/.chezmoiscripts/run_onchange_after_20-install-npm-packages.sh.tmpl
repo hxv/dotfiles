@@ -1,0 +1,5 @@
+#!/bin/bash
+# Skrypt `after_` – wykonuje się po nałożeniu konfiguracji npm.
+set -eu
+
+npm install -g {{ .packages.npm | join " " }}

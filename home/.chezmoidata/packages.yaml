@@ -26,7 +26,10 @@ packages:
     - apt-file
     - uptimed
     - gparted
+    - npm
   snap:
     - spotify
     - fx
     - phpstorm
+  npm:
+    - safe-rm
