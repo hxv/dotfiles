@@ -9,6 +9,7 @@ hex() {
 	hexdump -v -e '"%08_ad: "' -e $WIDTH'/1 "%02X "' -e '" |"' -e '"%_p"' -e '"|\n"' "$@" | less
 }
 
+alias pcregrep=pcre2grep
 alias xgrep='cut -d ":" -f 1,2 | tr "\n" " " | head -c -1 ; echo'
 
 alias cleanup-history='cat -n ~/.bash_history | sort -rk2 | sort -uk2 | sort -nk1 | cut -f2- > /tmp/.bash_history ; mv /tmp/.bash_history ~/.bash_history'

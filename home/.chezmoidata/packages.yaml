@@ -3,6 +3,30 @@ packages:
     - rofi
     - pgcli
     - ranger
+    - pcre2-utils
+    - whois
+    - nmap
+    - curl
+    - htop
+    - jq
+    - sshfs
+    - bindfs
+    - expect
+    - xclip
+    - fzf
+    - arandr
+    - kolourpaint
+    - okular
+    - xdotool
+    - keepassxc
+    - gdebi-core
+    - net-tools
+    - imagemagick
+    - libxml2-utils
+    - apt-file
+    - uptimed
+    - gparted
   snap:
     - spotify
+    - fx
     - phpstorm
