@@ -5,3 +5,4 @@ packages:
     - ranger
   snap:
     - spotify
+    - phpstorm
