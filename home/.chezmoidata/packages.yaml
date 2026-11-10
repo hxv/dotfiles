@@ -3,3 +3,5 @@ packages:
     - rofi
     - pgcli
     - ranger
+  snap:
+    - spotify

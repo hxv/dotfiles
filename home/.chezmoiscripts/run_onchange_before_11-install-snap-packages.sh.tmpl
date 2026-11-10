@@ -1,0 +1,6 @@
+#!/bin/bash
+set -eu
+
+for package in {{ .packages.snap | join " " }}; do
+  snap list "$package" >/dev/null 2>&1 || sudo snap install "$package"
+done
