@@ -1,6 +1,6 @@
 all_targets += bash
 
-bash_files = ~/.bash ~/.bashrc ~/.hosts
+bash_files = ~/.bash ~/.bashrc
 
 bash: /usr/bin/bash $(bash_files)
 .PHONY: bash

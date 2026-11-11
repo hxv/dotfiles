@@ -1,0 +1,26 @@
+#!/bin/bash
+set -Eeuo pipefail
+shopt -s inherit_errexit
+
+{{ $secretHostsFile := "dot_secrets/encrypted_hosts.asc" }}
+# {{ include $secretHostsFile | sha256sum }}
+
+readonly secretHostsFile={{ joinPath .chezmoi.destDir ".secrets/hosts" | squote }}
+readonly hostsFile="/etc/hosts"
+readonly tmpHosts=$(mktemp)
+readonly comment='# zarządzane przez chezmoi'
+
+trap 'rm -f "$tmpHosts"' EXIT # usuwamy plik przy wyjściu
+
+cp "$hostsFile" "$tmpHosts"
+
+export comment
+perl -i -ne 'print unless /\Q$ENV{comment}\E\s*$/' "$tmpHosts"
+
+while read -r ip host _; do
+    [[ -z "$ip" ]] && continue
+
+    echo "$ip $host $comment" >> "$tmpHosts"
+done < "$secretHostsFile"
+
+cat "$tmpHosts" | sudo tee "$hostsFile" > /dev/null
