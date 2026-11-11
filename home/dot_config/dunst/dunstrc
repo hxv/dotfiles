@@ -1,0 +1,64 @@
+[global]
+    font = DejaVu Sans Mono for Powerline 8
+    format = "<b>%s</b>\n%b"
+
+    origin = top-right
+    offset = (8, 8)
+    width = (200, 500)
+    height = (0, 150)
+    ellipsize = end
+
+    notification_limit = 3
+    history_length = 100
+    idle_threshold = 120
+
+    follow = keyboard
+
+    show_indicators = no
+
+    line_height = 1
+    gap_size = 1
+
+[shortcuts]
+    close = mod4+shift+slash
+    close_all = ctrl+shift+space
+    history = mod4+slash
+
+[urgency_low]
+    background = "#2B2B2B"
+    foreground = "#888888"
+    frame_color = "#313131"
+    timeout = 15
+
+[urgency_normal]
+    background = "#2B2B2B"
+    foreground = "#BBBBBB"
+    frame_color = "#515658"
+    timeout = 30
+
+[urgency_critical]
+    background = "#2B2B2B"
+    foreground = "#ff6b68"
+    frame_color = "#ff6b68"
+    timeout = 0
+
+
+#[ignore]
+#    # This notification will not be displayed
+#    summary = "foobar"
+#    format = ""
+#
+#[signed_on]
+#    appname = Pidgin
+#    summary = "*signed on*"
+#    urgency = low
+#
+#[signed_off]
+#    appname = Pidgin
+#    summary = *signed off*
+#    urgency = low
+#
+#[says]
+#    appname = Pidgin
+#    summary = *says*
+#    urgency = critical
