@@ -12,3 +12,10 @@ bin/lnav:
   executable: true
   checksum:
     sha256: "ec1750f0a6962eed6bb85ad4249457894f190e961277c56d69c47eecce9e705e"
+
+.tmux/tmux-logging:
+  type: git-repo
+  url: https://github.com/hxv/tmux-logging
+  refreshPeriod: "168h"
+  clone:
+    args: [--branch, master, --depth, 1]
