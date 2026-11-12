@@ -5,6 +5,7 @@ HOME=$(realpath ~)
 export LESS=-XRF
 export VISUAL='vim'
 export EDITOR="$VISUAL"
+export SUDO_EDITOR="$VISUAL"
 export GOPATH="$HOME/.go/"
 export HISTFILESIZE=
 export HISTSIZE=

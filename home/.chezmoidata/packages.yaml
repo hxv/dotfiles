@@ -1,4 +1,6 @@
 packages:
+  ppa:
+    - ppa:neovim-ppa/unstable
   apt:
     - rofi
     - pgcli
@@ -31,6 +33,7 @@ packages:
     - dunst
     - tmux
     - pipx
+    - neovim
   snap:
     - spotify
     - fx
@@ -44,3 +47,13 @@ packages:
     - ansible
     - yq
     - yt-dlp
+    - pynvim
+  update-alternatives:
+    - link: /usr/bin/vim
+      name: vim
+      path: /usr/bin/nvim
+      priority: 60
+    - link: /usr/bin/vimdiff
+      name: vimdiff
+      path: /usr/bin/nvim
+      priority: 60

@@ -1,9 +1,10 @@
-execute pathogen#infect()
-
 " VIM SETTINGS
 
 " enable syntax highlighting
 syntax on
+
+" disable modeline
+set nomodeline
 
 " use 4 spaces for indentation
 set shiftwidth=4
@@ -102,27 +103,6 @@ let NERDTreeQuitOnOpen=1
 " always show tabline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-
-" emmed enabled only in insert mode, with binding Ctrl-E,
-let g:user_emmet_mode='i'
-let g:user_emmet_leader_key='<C-E>'
-
-" open files from CtrlP in new buffer with Enter, or in current buffer with Ctrl-T
-let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<c-t>'],
-    \ 'AcceptSelection("b")': ['<cr>'],
-    \ }
-
-let g:ctrlp_max_files = 50000
-let g:ctrlp_working_path_mode = ''
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_match_window = 'results:100'
-let g:ctrlp_user_command = 'P=%s; find "$P" -type f -not -wholename "$P/.git/*" -not -wholename "$P/vendor/*"'
-
-" disable auto-save
-let g:workspace_autosave = 0
-let g:workspace_session_name = '.session.vim'
-let g:workspace_persist_undo_history = 0
 
 let g:indentguides_spacechar = '┆'
 let g:indentguides_tabchar = '¦'

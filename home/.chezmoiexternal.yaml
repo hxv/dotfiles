@@ -19,3 +19,59 @@ bin/lnav:
   refreshPeriod: "168h"
   clone:
     args: [--branch, master, --depth, 1]
+
+.local/share/nvim/site/pack/plugins/start/file-line:
+  type: git-repo
+  url: https://github.com/bogado/file-line
+  refreshPeriod: "168h"
+  clone:
+    args: [--branch, main, --depth, 1]
+
+.local/share/nvim/site/pack/plugins/start/vim-airline:
+  type: git-repo
+  url: https://github.com/vim-airline/vim-airline
+  refreshPeriod: "168h"
+  clone:
+    args: [--branch, master, --depth, 1]
+
+.local/share/nvim/site/pack/plugins/start/vim-better-whitespace:
+  type: git-repo
+  url: https://github.com/ntpeters/vim-better-whitespace
+  refreshPeriod: "168h"
+  clone:
+    args: [--branch, master, --depth, 1]
+
+.local/share/nvim/site/pack/plugins/start/vim-deus:
+  type: git-repo
+  url: https://github.com/hxv/vim-deus
+  refreshPeriod: "168h"
+  clone:
+    args: [--branch, master, --depth, 1]
+
+.local/share/nvim/site/pack/plugins/start/nerdtree:
+  type: git-repo
+  url: https://github.com/preservim/nerdtree
+  refreshPeriod: "168h"
+  clone:
+    args: [--branch, master, --depth, 1]
+
+.local/share/nvim/site/pack/plugins/start/code-stats-vim:
+  type: git-repo
+  url: https://gitlab.com/code-stats/code-stats-vim
+  refreshPeriod: "168h"
+  clone:
+    args: [--branch, master, --depth, 1]
+
+.local/share/nvim/site/pack/plugins/start/vim-indentguides:
+  type: git-repo
+  url: https://github.com/thaerkh/vim-indentguides
+  refreshPeriod: "168h"
+  clone:
+    args: [--branch, master, --depth, 1]
+
+.local/share/nvim/site/pack/plugins/start/vim-gitgutter:
+  type: git-repo
+  url: https://github.com/airblade/vim-gitgutter
+  refreshPeriod: "168h"
+  clone:
+    args: [--branch, main, --depth, 1]

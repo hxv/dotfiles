@@ -1,0 +1,6 @@
+#!/bin/bash
+set -eu
+
+{{- range (index .packages "update-alternatives")}}
+sudo update-alternatives --install {{ .link }} {{ .name }} {{ .path }} {{ .priority }}
+{{- end }}
