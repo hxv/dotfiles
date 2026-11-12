@@ -30,6 +30,7 @@ packages:
     - php8.5-{cli,amqp,ast,bcmath,curl,dev,gd,gmp,intl,ldap,mbstring,memcache,memcached,mongodb,mysql,pgsql,readline,redis,soap,sqlite3,xdebug,xml,xsl,yaml,zip} # zadziała tylko z bash bez escape argumentów
     - dunst
     - tmux
+    - pipx
   snap:
     - spotify
     - fx
@@ -38,3 +39,8 @@ packages:
     - safe-rm
   composer:
     - psy/psysh
+  pipx:
+    - termdown
+    - ansible
+    - yq
+    - yt-dlp

@@ -18,7 +18,7 @@ $(vim_ppa):
 	sudo rm -rf $@
 	sudo ln -s /usr/bin/nvim $@
 
-pynvim: ~/.local/bin/pip3
+pynvim:
 	~/.local/bin/pip3 install pynvim
 .PHONY: pynvim
 
