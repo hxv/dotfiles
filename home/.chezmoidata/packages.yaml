@@ -1,6 +1,7 @@
 packages:
   ppa:
     - ppa:neovim-ppa/unstable
+    - ppa:git-core/ppa
   apt:
     - rofi
     - pgcli
@@ -34,6 +35,8 @@ packages:
     - tmux
     - pipx
     - neovim
+    - git
+    - git-delta
   snap:
     - spotify
     - fx

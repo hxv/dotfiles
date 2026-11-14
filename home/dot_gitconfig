@@ -1,0 +1,73 @@
+[user]
+    email = admin@hxv.me
+    name = Michał Włodarczyk
+[alias]
+    s = status -u
+    debug-ssh = "!git -c core.sshCommand=\"ssh -vvv\" fetch"
+    add-deleted = "!f() { git status -uno --porcelain=2 | grep -P '^1 \\.D' | cut -d ' ' -f 9- | xargs -I {} git add {}; }; f"
+    b = rev-parse --abbrev-ref HEAD
+    l = log --oneline --decorate
+[push]
+    default = current
+    autoSetupRemote = true
+[pull]
+    rebase = true
+[diff]
+    renamelimit = 999999
+    colorMoved = plain
+[rerere]
+    enabled = true
+[merge]
+    ff = false
+    renamelimit = 999999
+    conflictstyle = zdiff3
+[grep]
+    patternType = perl
+    lineNumber = true
+[color "grep"]
+    linenumber = green
+    match = yellow bold
+    filename = magenta
+[interactive]
+    diffFilter = delta --color-only
+[advice]
+    statusHints = false
+[core]
+    excludesfile = ~/.gitignore-global
+    pager = delta
+[rebase]
+    autoSquash = true
+    autoStash = true
+[commit]
+    gpgSign = true
+[log]
+    date=iso8601
+[gpg]
+    program = gpg2
+[init]
+    defaultBranch = main
+[delta]
+    navigate = true
+
+    hunk-header-style = omit
+    line-numbers = true
+
+    syntax-theme = none
+
+    minus-style = syntax "#3f0001"
+    plus-style = syntax "#002800"
+    minus-empty-line-marker-style = syntax "#3f0001"
+    plus-empty-line-marker-style = syntax "#002800"
+    map-styles = bold magenta => "darkred #3f0001", bold cyan => "darkgreen #002800"
+    zero-style = dim syntax
+    pager = "bash -c 'delta-fix-empty-lines | less -r'"
+    #pager = "less -+R"
+    #keep-plus-minus-markers = true
+
+    file-style = lightblue
+    file-added-label = "✚"
+    file-removed-label = "✖"
+    file-modified-label = "✱"
+    file-renamed-label = "➔"
+    file-copied-label = "⧉"
+
