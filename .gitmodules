@@ -1,3 +1,0 @@
-[submodule "bin/safe-rm"]
-	path = bin/safe-rm
-	url = https://github.com/kaelzhang/shell-safe-rm.git
