@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+# progi
+threshold_degraded=70
+threshold_bad=85
+
+for hwmon in /sys/class/hwmon/hwmon*; do
+    case "$(cat "$hwmon/name" 2>/dev/null)" in
+        k10temp|coretemp) # amd|intel
+            temp=$(( $(cat "$hwmon/temp1_input") / 1000 ))
+
+            color="${color_good}"
+            if (( temp >= threshold_bad )); then
+                color="${color_bad}"
+            elif (( temp >= threshold_degraded )); then
+                color="${color_degraded}"
+            fi
+
+            text=" ${temp} °C" color="$color" jq -n -M -c '{full_text: env.text, color: env.color}'
+
+            exit
+            ;;
+    esac
+done

@@ -41,6 +41,17 @@ packages:
     - gnupg
     - scdaemon
     - pcscd
+    - numix-gtk-theme
+    - elementary-xfce-icon-theme
+    - autorandr
+    - i3
+    - i3lock
+    - feh
+    - scrot
+    - brightnessctl
+    - playerctl
+    - rofi
+    - keepassxc-full
   snap:
     - spotify
     - fx

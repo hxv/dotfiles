@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
+set -Eeuo pipefail
+shopt -s inherit_errexit
 
-SCRIPT=$(basename "$0")
+SELF=$(basename "$0")
 DIR=$(dirname "$0")
-
-IFS=$'\n'
 
 export color_good='#DDDDDD'
 export color_degraded='#AE8ABE'
@@ -11,14 +11,11 @@ export color_bad='#FF6B68'
 
 n=0
 
-i3status | while :
-do
-	read line
-
+i3status | while IFS= read -r line; do
     if [[ $n == 0 || $n == 1 ]]; then
         echo "$line"
 
-        n=$(( $n + 1 ))
+        n=$(( n + 1 ))
 
         continue
     fi
@@ -27,34 +24,32 @@ do
         line="${line:1}"
     fi
 
-    parsed=($(jq -c -M '.[]' <<< "$line"))
+    elements=$(jq -c -M '.[]' <<< "$line")
+    mapfile -t parsed <<< "$elements"
 
-    buffer='['
+    buffer=''
 
     for part in "${parsed[@]}"; do
-        script=$(echo "$part" | grep -o -P 'placeholder_[^"]+' | cut -d _ -f 2-)
+        [[ -z "$part" ]] && continue
 
-        if [[ "$script" == "" ]]; then
-            buffer+="$part,"
-        else
+        if [[ "$part" =~ placeholder_([^\"]+) ]]; then
+            script="${BASH_REMATCH[1]}"
             export script
 
-            result=$("$DIR/$SCRIPT.d/$script")
+            result=$("$DIR/$SELF.d/$script" || true)
 
-            if [[ "$result" == "" ]]; then
-                continue
-            fi
+            [[ -z "$result" ]] && continue
 
             if [[ "${result:0:1}" != "{" ]]; then
-                result='{"full_text": "'$result'"}'
+                result=$(jq -n -M -c '{full_text: $text}' --arg text "$result")
             fi
 
             buffer+=$(jq -c -M '{full_text: .full_text, instance: env.script, name: env.script, markup: "none", color: .color}' <<< "$result")
             buffer+=','
+        else
+            buffer+="$part,"
         fi
     done
 
-    buffer="${buffer:0:-1}],"
-
-    echo "$buffer"
+    echo "[${buffer%,}],"
 done

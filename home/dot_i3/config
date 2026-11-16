@@ -13,14 +13,14 @@ bindsym $alt+F4 kill
 bindsym $mod+x kill
 
 bindsym $mod+d exec rofi -show drun
-bindsym $mod+h exec ~/bin/task-rofi
-bindsym $mod+Shift+h exec ~/bin/task-rofi all
+bindsym $mod+h exec ~/Code/task-rofi/bin/task-rofi taskwarrior
 bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- unmute
 bindsym XF86AudioMute exec amixer -D pulse sset Master mute
-bindsym $mod+b exec ~/bin/vol-mode
 bindsym XF86MonBrightnessUp exec ~/bin/light-control up
 bindsym XF86MonBrightnessDown exec ~/bin/light-control down
+
+bindsym Print exec xfce4-screenshooter --delay=0 --window
 
 bindsym $mod+Up focus up
 bindsym $mod+i focus up
@@ -123,35 +123,13 @@ bindsym $mod+Shift+u move container to workspace $workspace17
 bindsym $mod+Shift+o move container to workspace $workspace19
 bindsym $mod+Shift+p move container to workspace $workspace20
 
-set $monitor_down eDP-1-1
-set $monitor_up HDMI-1-1
-
-workspace $workspace1 output $monitor_up
-workspace $workspace2 output $monitor_up
-workspace $workspace3 output $monitor_down
-workspace $workspace4 output $monitor_down
-workspace $workspace5 output $monitor_down
-workspace $workspace6 output $monitor_down
-workspace $workspace7 output $monitor_up
-workspace $workspace8 output $monitor_down
-workspace $workspace9 output $monitor_down
-workspace $workspace10 output $monitor_up
-workspace $workspace11 output $monitor_up
-workspace $workspace12 output $monitor_up
-workspace $workspace13 output $monitor_up
-workspace $workspace14 output $monitor_up
-workspace $workspace15 output $monitor_down
-workspace $workspace16 output $monitor_down
-workspace $workspace17 output $monitor_down
-workspace $workspace18 output $monitor_down
-workspace $workspace19 output $monitor_down
-workspace $workspace20 output $monitor_down
-
-#assign [class="Google-chrome"] $workspace1
-#assign [class="Firefox"] $workspace1
-#assign [class="NetBeans IDE 8.1"] $workspace2
-#assign [class="Sublime_text"] $workspace4
-#assing [class = "Thunderbird"] $workspace9
+# Monitory konfigurowane są przez skrypt ~/.config/autorandr/postswitch.
+# Z jakiegoś powodu nie można użyć zmiennych ustawionych w pliku dołączonym przez `include` w tym
+# pliku, ale można ich użyć w innych plikach dołączanych przez `include` (natomiast zmienne ustawiane
+# w tym pliku działają wszędzie) – dlatego przypinanie workspace do monitorów jest w osobnym pliku
+# konfiguracyjnym...
+include ~/.i3/monitors.conf
+include ~/.i3/workspaces.conf
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -212,6 +190,7 @@ bar {
 focus_follows_mouse no
 force_display_urgency_hint 500 ms
 focus_wrapping no
+mouse_warping none
 
 new_window normal
 new_float pixel 4
@@ -233,25 +212,19 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
-exec_always --no-startup-id xfsettingsd --sm-client-disable --daemon --replace
-exec_always --no-startup-id feh --bg-max ~/.i3/wallpaper.png
-exec_always --no-startup-id gpg-agent --daemon --enable-ssh-support
+exec_always --no-startup-id sh -c 'autorandr --change ; ~/.config/autorandr/postswitch'
 
-exec --no-startup-id ~/.screenlayout/home.bash.sh
+exec_always --no-startup-id xfsettingsd --sm-client-disable --daemon --replace
+#exec_always --no-startup-id gpg-agent --daemon --enable-ssh-support
 
 exec_always --no-startup-id ~/bin/configure-keyboard
 exec_always --no-startup-id ~/bin/configure-mouse
-exec_always --no-startup-id ~/bin/i3-msg-center-floating
-
-exec_always --no-startup-id ~/bin/uhk-urgent
-exec_always --no-startup-id ~/bin/uhk-auto-keymap
+exec_always --no-startup-id ~/bin/configure-screen
 
 exec --no-startup-id nm-applet
 exec --no-startup-id keepassxc
 exec --no-startup-id /usr/local/bin/QNAP/QsyncClient/Qsync.sh
 
-focus_follows_mouse no
-mouse_warping none
 
 
 assign [class="jetbrains-phpstorm"] $workspace2

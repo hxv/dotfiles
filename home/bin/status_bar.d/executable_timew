@@ -8,6 +8,4 @@ fi
 
 task=$(task _get "$task".description)
 
-export task=" $task"
-
-jq -n -M -c '{full_text: env.task, color: env.color_degraded}'
+task=" $task" jq -n -M -c '{full_text: env.task, color: env.color_degraded}'

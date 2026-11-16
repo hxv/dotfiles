@@ -1,0 +1,6 @@
+{{- if ne .machine "home" }}
+.config/autorandr/home-*
+{{- end }}
+{{- if ne .machine "work" }}
+.config/autorandr/work-*
+{{- end }}

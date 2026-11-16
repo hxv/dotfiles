@@ -1,0 +1,12 @@
+#!/bin/bash
+set -Eeuo pipefail
+
+sudo mkdir -p /etc/systemd/logind.conf.d
+sudo tee /etc/systemd/logind.conf.d/50-lid.conf > /dev/null <<'CONF'
+[Login]
+HandleLidSwitch=ignore
+HandleLidSwitchExternalPower=ignore
+HandleLidSwitchDocked=ignore
+CONF
+
+sudo systemctl kill -s HUP systemd-logind

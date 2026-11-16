@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+step="5%"
+min_percent=2
+
+case "${1:-}" in
+    current) brightnessctl -m | cut -d, -f4 | tr -d '%' ;;
+    up)      brightnessctl -q -e set "${step}+" ;;
+    down)
+        min=$(( $(brightnessctl max) * min_percent / 100 ))
+        brightnessctl -q -e --min-value="$min" set "${step}-"
+        ;;
+    *)       echo "Usage: ${0##*/} current|up|down" >&2; exit 1 ;;
+esac

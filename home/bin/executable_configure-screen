@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# don't turn off the screen
+xset s off
+xset -dpms
+xset s noblank
+

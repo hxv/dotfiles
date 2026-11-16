@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+# Nazwy wyjść MST (DisplayPort-N) zmieniają się, więc role monitorów
+# ($monitor_up / $monitor_down) wyznaczamy z ich położenia i zapisujemy
+# do pliku włączanego w ~/.i3/config.
+conf="$HOME/.i3/monitors.conf"
+
+# Format wiersza: " 0: +*DP-1 1920/480x1080/270+0+1080  DP-1" -> "<y> <nazwa>"
+monitors=$(xrandr --listmonitors | awk 'NR>1 { n=split($3, a, "+"); print a[n], $NF }' | sort -n)
+up=$(sed -n 1p <<<"$monitors" | cut -d' ' -f2)
+down=$(sed -n 2p <<<"$monitors" | cut -d' ' -f2)
+down=${down:-$up}  # przy jednym monitorze obie role wskazują na ten sam
+
+if [[ -n "$up" ]]; then
+    new=$(printf 'set $monitor_up %s\nset $monitor_down %s\n' "$up" "$down")
+    if [[ "$new" != "$(cat "$conf" 2>/dev/null)" ]]; then
+        printf '%s\n' "$new" > "$conf"
+        # reload uruchamia exec_always (czyli ten skrypt) ponownie – drugi raz plik się nie zmieni
+        i3-msg -q reload || true
+    fi
+fi
+
+feh --bg-fill ~/.i3/wallpaper.png
