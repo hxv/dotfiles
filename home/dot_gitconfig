@@ -42,8 +42,6 @@
     gpgSign = true
 [log]
     date=iso8601
-[gpg]
-    program = gpg2
 [init]
     defaultBranch = main
 [delta]

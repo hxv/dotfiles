@@ -1,0 +1,8 @@
+#!/bin/bash
+set -eu
+
+# public-key.asc hash: {{ include "private_dot_gnupg/.public-key.asc" | sha256sum }}
+
+gpg --import <<'KEY'
+{{ include "private_dot_gnupg/.public-key.asc" -}}
+KEY

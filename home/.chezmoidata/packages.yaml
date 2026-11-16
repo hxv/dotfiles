@@ -38,6 +38,9 @@ packages:
     - git
     - git-delta
     - openssh-client
+    - gnupg
+    - scdaemon
+    - pcscd
   snap:
     - spotify
     - fx
