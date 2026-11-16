@@ -1,0 +1,8 @@
+{{ range $name, $enabled := .ssh.configs -}}
+{{   if $enabled -}}
+Include config.d/{{ $name }}
+{{   end -}}
+{{ end }}
+Host *
+    ServerAliveInterval 10
+    ServerAliveCountMax 3

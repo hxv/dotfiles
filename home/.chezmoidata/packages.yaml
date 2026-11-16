@@ -37,6 +37,7 @@ packages:
     - neovim
     - git
     - git-delta
+    - openssh-client
   snap:
     - spotify
     - fx
