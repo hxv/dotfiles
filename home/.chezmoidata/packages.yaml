@@ -2,6 +2,7 @@ packages:
   ppa:
     - ppa:neovim-ppa/unstable
     - ppa:git-core/ppa
+#    - ppa:yubico/stable
   apt:
     - rofi
     - pgcli
@@ -52,6 +53,8 @@ packages:
     - playerctl
     - rofi
     - keepassxc-full
+    - libpam-u2f
+    - yubikey-manager
   snap:
     - spotify
     - fx
