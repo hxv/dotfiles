@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-if which kubectl > /dev/null; then
-    source <(kubectl completion bash)
-
-    alias k=kubecolor
-    complete -o default -F __start_kubectl k
-fi
