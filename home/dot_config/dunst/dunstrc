@@ -42,6 +42,9 @@
     frame_color = "#ff6b68"
     timeout = 0
 
+[push_to_mobile]
+    summary = *
+    script = /home/hxv/bin/dunst-ntfy
 
 #[ignore]
 #    # This notification will not be displayed

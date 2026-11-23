@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+APPNAME=$1
+SUMMARY=$2
+BODY=$3
+ICON=$4
+URGENCY=$5
+
+tmpDir="${XDG_RUNTIME_DIR:?Brak wartości zmiennej.}"
+
+if [[ ! -f "${tmpDir}/afked" ]]; then
+  exit
+fi
+
+case "${URGENCY,,}" in
+  low) priority=2 ;;
+  critical) priority=4 ;;
+  *) priority=3 ;;
+esac
+
+ntfy publish \
+  --title "[$APPNAME] $SUMMARY" \
+  --priority "$priority" \
+  "${USER}_phone" \
+  "$BODY"

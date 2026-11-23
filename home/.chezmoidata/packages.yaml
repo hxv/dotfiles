@@ -55,6 +55,7 @@ packages:
     - keepassxc-full
     - libpam-u2f
     - yubikey-manager
+    - ntfy
   snap:
     - spotify
     - fx

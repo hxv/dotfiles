@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+tmpDir="${XDG_RUNTIME_DIR:?Brak wartości zmiennej.}"
+afkFile="${tmpDir}/afked"
+
+if [ -f "$afkFile" ]; then
+  rm -rf "$afkFile"
+
+  notify-send ntfy "Wyłączono przekierowanie powiadomień"
+else
+  touch "$afkFile"
+
+  notify-send ntfy "Aktywowano przekierowanie powiadomień"
+fi
