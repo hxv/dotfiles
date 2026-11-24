@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Enable profile switching with `autorandr` on lid opening/closing.
+
+set -Eeuo pipefail
+shopt -s inherit_errexit
+
+{{ template "messages.bash" . }}
+
+if systemctl list-unit-files "autorandr-lid-listener.service" --no-legend 2>/dev/null | grep -q "^autorandr-lid-listener.service"; then
+  sudo systemctl enable --now autorandr-lid-listener.service
+
+  success "Service autorandr-lid-listener.service enabled."
+else
+  warning "Service autorandr-lid-listener.service does not exists – it was not enabled."
+fi
+
+sudo systemctl enable --now autorandr.service
+
+success "Service autorandr.service enabled."

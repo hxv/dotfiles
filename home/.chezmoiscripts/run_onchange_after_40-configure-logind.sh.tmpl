@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Ignore lid closing in `logind` (PC shouldn't shut down/suspend/hibernate).
+
+set -Eeuo pipefail
+shopt -s inherit_errexit
+
+{{ template "messages.bash" . }}
+
+sudo mkdir -p /etc/systemd/logind.conf.d
+sudo tee /etc/systemd/logind.conf.d/50-lid.conf > /dev/null <<'CONF'
+[Login]
+HandleLidSwitch=ignore
+HandleLidSwitchExternalPower=ignore
+HandleLidSwitchDocked=ignore
+CONF
+
+sudo systemctl kill -s HUP systemd-logind.service
+
+success "Service systemd-logind.service configured to ignore lid state."

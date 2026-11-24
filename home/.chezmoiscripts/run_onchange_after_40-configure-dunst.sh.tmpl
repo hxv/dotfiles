@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# Disable `xfce4-notifyd.service` (if it exists), I'm using `dunst.service` instead.
+
+set -Eeuo pipefail
+shopt -s inherit_errexit
+
+{{ template "messages.bash" . }}
+
+if systemctl --user list-unit-files "xfce4-notifyd.service" --no-legend 2>/dev/null | grep -q "^xfce4-notifyd.service"; then
+  systemctl --user stop xfce4-notifyd.service # stop
+  systemctl --user mask xfce4-notifyd.service # disable
+
+  success "Service xfce4-notifyd.service disabled."
+else
+  warning "Service xfce4-notifyd.service does not exists – it was not disabled."
+fi
+
+mkdir -p ~/.config/systemd/user/dunst.service.d
+cat << 'EOF' > ~/.config/systemd/user/dunst.service.d/autostart.conf
+[Unit]
+After=graphical-session.target
+
+[Service]
+ExecStartPre=/bin/sleep 2
+
+[Install]
+WantedBy=graphical-session.target
+EOF
+
+systemctl --user daemon-reload
+systemctl --user enable --now dunst.service
+
+success "Service dunst.service enabled."
