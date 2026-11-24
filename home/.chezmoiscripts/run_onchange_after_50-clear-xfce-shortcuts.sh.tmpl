@@ -1,0 +1,13 @@
+#!/bin/bash
+# Remove all keyboard shortcuts in `xfce4` (`i3` handles that).
+
+set -Eeuo pipefail
+shopt -s inherit_errexit
+
+{{ template "messages.bash" . }}
+
+xfconf-query -c xfce4-keyboard-shortcuts -l | grep -P '/(commands|xfwm4)/custom/' | while read -r prop; do
+  xfconf-query -c xfce4-keyboard-shortcuts -p "$prop" -r
+done
+
+success "Xfce4 keyboard shortcuts disabled."

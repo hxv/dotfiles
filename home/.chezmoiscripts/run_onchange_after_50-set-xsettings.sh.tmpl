@@ -1,5 +1,12 @@
 #!/bin/bash
-set -eu
+# Set preferred theme and icon theme.
+
+set -Eeuo pipefail
+shopt -s inherit_errexit
+
+{{ template "messages.bash" . }}
 
 xfconf-query -c xsettings -p /Net/ThemeName -n -t string -s "Numix"
 xfconf-query -c xsettings -p /Net/IconThemeName -n -t string -s "elementary-xfce-hidpi"
+
+success "Theme and icon theme set successfully."
