@@ -1,1 +1,16 @@
 #!/usr/bin/env bash
+
+local ref icon=''
+
+CONF="${KUBECONFIG:-$HOME/.kube/config}"
+CONF=$(basename $(realpath "$CONF"))
+CONF="${CONF/*./}"
+
+if [[ "$KUBECONFIG" == "" ]]; then
+    bg=46
+else
+    bg=106
+    fg=30
+fi
+
+text="${icon} ${CONF}"
