@@ -35,6 +35,8 @@
 [core]
     excludesfile = ~/.gitignore-global
     pager = delta
+[pager]
+    grep = less
 [rebase]
     autoSquash = true
     autoStash = true
