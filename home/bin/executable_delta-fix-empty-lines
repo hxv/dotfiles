@@ -1,33 +1,56 @@
 #!/usr/bin/env php
 <?php
-// Tła TrueColor wyciągnięte z Twoich kodów (RGB: #002800 i #3f0001)
-$bg_green   = "\e[48;2;0;40;0m";
-$bg_red     = "\e[48;2;63;0;1m";
-$bce        = "\e[0K";
-$reset      = "\e[0m";
+/*
+ * `delta` for `git` has problem setting background for empty lines (or I'm unable to configure this correctly) – this
+ * script tries to handle that.
+ *
+ * It's not the prettiest thing in the world and it may not be the fastest, but I can't stand uncolored lines that split
+ * my diffs unnecessarily.
+ *
+ * For script to work you should set `delta.pager` in `.gitconfig` to `"bash -c 'delta-fix-empty-lines | less'"`
+ * and `LESSANSIENDCHARS` should contain "K".
+ */
 
-// Kody ANSI z Twojego logu
-$gutter_end = "\e[34m│\e[0m"; // Niebieska kreska panelu
-$color_old  = "\e[38;5;88m";    // Ciemnoczerwony numer (usunięte)
-$color_new  = "\e[38;5;28m";    // Ciemnozielony numer (dodane)
+const MINUS_FORMAT = "\e[48;2;63;0;1m";
+const PLUS_FORMAT = "\e[48;2;0;40;0m";
 
-// Czytamy strumień wejścia linijka po linijce
-while (($line = fgets(STDIN)) !== false) {
-    $line = rtrim($line, "\r\n");
+const FORMAT_REGEXP = '(?:\\e\\[[;0-9]*m)*';
 
-    // Jeśli linia kończy się na niebieskiej kresce, znaczy że dalej nie ma tekstu (jest pusta)
-    if (str_ends_with($line, $gutter_end)) {
-        $has_old = str_contains($line, $color_old);
-        $has_new = str_contains($line, $color_new);
+$HOME = (string) getenv('HOME');
+if ($HOME !== '' && file_exists("{$HOME}/.gitconfig")) {
+    $gitConfig = parse_ini_file("{$HOME}/.gitconfig", true);
+} else {
+    $gitConfig = [];
+}
 
-        if ($has_new && !$has_old) {
-            // Pusta linia dodana
-            $line .= $bg_green . $bce . $reset;
-        } elseif ($has_old && !$has_new) {
-            // Pusta linia usunięta
-            $line .= $bg_red . $bce . $reset;
+if (!is_array($gitConfig)) {
+    fwrite(STDERR, "\e[31mError parsing git configuration ({$HOME}/.gitconfig) in " . __FILE__ . ".\e[0m\n");
+
+    $gitConfig = [];
+}
+
+function inlineLineNumberRegExp(string $format): string {
+    return preg_replace('/\\\\{n([mp]).*?\\}/', FORMAT_REGEXP . '\\s*(?<\\1>\\d*)\\s*' . FORMAT_REGEXP, preg_quote($format, '/'));
+};
+
+$leftFormat = inlineLineNumberRegExp($config['delta']['line-numbers-left-format'] ?? '{nm:^4}⋮');
+$rightFormat = inlineLineNumberRegExp($config['delta']['line-numbers-right-format'] ?? '{np:^4}│');
+
+$regExp = FORMAT_REGEXP . $leftFormat . FORMAT_REGEXP . $rightFormat;
+$regExp = preg_replace('/(' . preg_quote(FORMAT_REGEXP, '/') . ')+/', FORMAT_REGEXP, $regExp);
+
+while (false !== $line = fgets(STDIN)) {
+    if (preg_match("/^{$regExp}\\e\\[0m(\\r?\\n)$/", $line, $matches) === 1) {
+        $line = rtrim($line, "\r\n");
+
+        if ($matches['m'] !== '' && $matches['p'] === '') {
+            $line .= MINUS_FORMAT;
+        } elseif ($matches['m'] === '' && $matches['p'] !== '') {
+            $line .= PLUS_FORMAT;
         }
+
+        $line .= "\e[0K{$matches[3]}";
     }
 
-    echo $line . PHP_EOL;
+    echo $line;
 }

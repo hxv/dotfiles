@@ -54,15 +54,13 @@
 
     syntax-theme = none
 
-    minus-style = syntax "#3f0001"
-    plus-style = syntax "#002800"
-    minus-empty-line-marker-style = syntax "#3f0001"
-    plus-empty-line-marker-style = syntax "#002800"
-    map-styles = bold magenta => "darkred #3f0001", bold cyan => "darkgreen #002800"
+    minus-style = "syntax \"#3f0001\""
+    plus-style = "syntax \"#002800\""
+    minus-empty-line-marker-style = "syntax \"#3f0001\""
+    plus-empty-line-marker-style = "syntax \"#002800\""
+    map-styles = "bold magenta => \"darkred #3f0001\", bold cyan => \"darkgreen #002800\""
     zero-style = dim syntax
-    pager = "bash -c 'delta-fix-empty-lines | less -r'"
-    #pager = "less -+R"
-    #keep-plus-minus-markers = true
+    pager = "bash -c 'delta-fix-empty-lines | less'"
 
     file-style = lightblue
     file-added-label = "✚"

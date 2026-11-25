@@ -5,6 +5,7 @@ export EDITOR="$VISUAL"
 export SUDO_EDITOR="$VISUAL"
 
 export LESS=-XRF
+export LESSANSIENDCHARS=mK
 
 export HISTFILESIZE=
 export HISTSIZE=
