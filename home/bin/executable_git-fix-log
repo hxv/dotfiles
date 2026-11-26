@@ -1,0 +1,58 @@
+#!/usr/bin/env php
+<?php
+
+$i = 0;
+
+while (false !== $line = fgets(STDIN)) {
+    $line = preg_replace_callback('[<name>(.+?)</name>]', function (array $m): string {
+        $name = $m[1];
+        $name = str_replace(['.', '-', ','], ' ', $name);
+        $name = preg_split('/\\b/u', $name);
+        $name = array_map('trim', $name);
+        $name = array_filter($name);
+        $name = array_map(fn (string $part): string => mb_substr($part, 0, 1), $name);
+
+        return str_pad(implode('', $name), 2);
+    }, $line);
+
+    $line = preg_replace_callback('[<date>(.+?)</date>]', function (array $m): string {
+        $date = $m[1];
+        $date = preg_replace_callback('/^(\d+) (\w+)(, \d+ \d+)* ago$/', function (array $m): string {
+            $value = $m[1];
+            switch ($m[2]) {
+                case 'second':
+                case 'seconds':
+                    $unit = 's'; break;
+                case 'minute':
+                case 'minutes':
+                    $unit = 'm'; break;
+                case 'hour':
+                case 'hours':
+                    $unit = 'h'; break;
+                case 'day':
+                case 'days':
+                    $unit = 'D'; break;
+                case 'week':
+                case 'weeks':
+                    $unit = 'W'; break;
+                case 'month':
+                case 'months':
+                    $unit = 'M'; break;
+                case 'year':
+                case 'years':
+                    $unit = 'Y'; break;
+                default:
+                    $unit = '?';
+            }
+
+            return str_pad("-{$value}{$unit}", 4, ' ', STR_PAD_LEFT);
+        }, $date);
+
+        return $date;
+    }, $line);
+
+    echo "\e[90m";
+    echo str_pad('~' . ($i++), 3, ' ', STR_PAD_LEFT);
+    echo ' ';
+    echo $line;
+}
