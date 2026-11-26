@@ -87,7 +87,8 @@ autocmd FileType html setlocal iskeyword+=-
 set cursorline
 set guicursor=
 
-set conceallevel=0
+" disable hiding quotes in JSON with `conveallevel` set to something other than 0 (which `vim-indentguides` sets)
+let g:vim_json_conceal = 0
 
 " /VIM SETTINGS
 
