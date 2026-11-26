@@ -19,7 +19,6 @@
     line_height = 1
     gap_size = 1
 
-[shortcuts]
     close = mod4+shift+slash
     close_all = ctrl+shift+space
     history = mod4+slash
