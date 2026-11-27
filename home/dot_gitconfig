@@ -6,7 +6,7 @@
     debug-ssh = "!git -c core.sshCommand=\"ssh -vvv\" fetch"
     add-deleted = "!f() { git status -uno --porcelain=2 | grep -P '^1 \\.D' | cut -d ' ' -f 9- | xargs -I {} git add {}; }; f"
     b = rev-parse --abbrev-ref HEAD
-    l = "!f() { git log --color=always --format=\"%C(yellow)%h %C(blue)<name>%an</name> %C(green)<date>%ar</date> %C(reset)%s%C(auto)%d\" \"$@\" | git-fix-log; }; f"
+    l = "!f() { git log --color=always --format=\"%C(yellow)%h %C(blue)<name>%an</name> %C(green)<date>%ar</date> %C(reset)%s%C(auto)%d\" \"$@\" | git-fix-log | less; }; f"
 [push]
     default = current
     autoSetupRemote = true
